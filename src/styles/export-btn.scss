@@ -1,0 +1,38 @@
+/* ─── 导出按钮弹窗样式 ─── */
+.group-title {
+  color: #999;
+  padding: 3px 0;
+}
+
+.extension-group {
+  .group-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+
+    .list-item {
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 12px;
+
+      &:hover {
+        background-color: #ecf5ff;
+      }
+
+      &.active {
+        color: #409eff;
+        background-color: #ecf5ff;
+      }
+    }
+  }
+}
+
+.df-export-file {
+  .df-dialog__body {
+    padding-top: 0 !important;
+  }
+}

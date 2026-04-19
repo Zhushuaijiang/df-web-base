@@ -1,0 +1,230 @@
+/* ═══════════════════════════════════════════════════════════════
+ * df-web-base Demo Utilities — AI 友好的 Demo 样式工具类
+ *
+ * 所有组件文档页面通用，无需每个 .md 文件重复定义。
+ * 使用方法：在 docs/.vitepress/theme/index.ts 中 import 此文件。
+ *
+ * 命名规范：.demo-{类别}-{变体}
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* ─── 容器框架 ─── */
+.demo-frame {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #E8EBF0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.demo-frame--h300 { height: 300px; }
+.demo-frame--h360 { height: 360px; }
+.demo-frame--h400 { height: 400px; }
+.demo-frame--h420 { height: 420px; }
+.demo-frame--h480 { height: 480px; }
+.demo-frame--h520 { height: 520px; }
+
+/* ─── 表单描述列表 ───
+ * 医疗 HIS 详情页标准表单布局：
+ * - 标签右对齐，灰色底
+ * - 值左对齐，白底
+ * - 边框分隔
+ */
+.demo-form {
+  display: grid;
+  font-size: 13px;
+  gap: 0;
+}
+.demo-form--1col { grid-template-columns: 1fr; }
+.demo-form--2col { grid-template-columns: repeat(2, 1fr); }
+.demo-form--3col { grid-template-columns: repeat(3, 1fr); }
+.demo-form--4col { grid-template-columns: repeat(4, 1fr); }
+.demo-form--lg { font-size: 14px; }
+
+.demo-field {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #F0F2F5;
+  min-height: 36px;
+}
+.demo-form--lg .demo-field {
+  min-height: 40px;
+}
+
+.demo-lbl {
+  flex-shrink: 0;
+  width: 80px;
+  padding: 7px 12px 7px 8px;
+  color: #6B7790;
+  background: #F7F8FA;
+  line-height: 20px;
+  white-space: nowrap;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.demo-val {
+  flex: 1;
+  padding: 7px 12px;
+  color: #1A1A1A;
+  line-height: 20px;
+}
+.demo-val b,
+.demo-val strong {
+  font-weight: 600;
+}
+
+/* ─── 文字颜色 ─── */
+.demo-text--strong { font-weight: 500; }
+.demo-text--success { color: #52C41A; font-weight: 500; }
+.demo-text--warning { color: #FAAD14; font-weight: 500; }
+.demo-text--danger { color: #F5222D; font-weight: 500; }
+.demo-text--muted { color: #6B7790; }
+.demo-text--primary { color: #2AA890; font-weight: 500; }
+
+/* ─── 分隔标题 ─── */
+.demo-section {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A1A1A;
+  padding: 8px 0;
+  border-bottom: 1px solid #E8EBF0;
+  margin-bottom: 4px;
+}
+.demo-section--spaced { margin-top: 16px; }
+.demo-section--tight { margin-top: 0; }
+
+/* ─── 数据表格 ─── */
+.demo-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.demo-tbl th {
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 500;
+  color: #6B7790;
+  font-size: 12px;
+  line-height: 18px;
+  background: #F7F8FA;
+  border-bottom: 1px solid #E8EBF0;
+}
+.demo-tbl td {
+  padding: 8px 12px;
+  color: #1A1A1A;
+  line-height: 18px;
+  border-bottom: 1px solid #F0F2F5;
+}
+.demo-tbl tr:last-child td {
+  border-bottom: none;
+}
+.demo-cell--right { text-align: right; }
+.demo-cell--center { text-align: center; }
+
+/* ─── 状态标签 ─── */
+.demo-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  vertical-align: middle;
+}
+.demo-tag + .demo-tag { margin-left: 6px; }
+.demo-tag--flush { margin: 0; }
+.demo-tag--success { background: #F6FFED; color: #52C41A; }
+.demo-tag--info { background: #E6F7FF; color: #1890FF; }
+.demo-tag--warning { background: #FFFBE6; color: #FAAD14; }
+.demo-tag--danger { background: #FFF1F0; color: #F5222D; }
+.demo-tag--primary { background: #E8F5F3; color: #2AA890; }
+
+/* ─── 列表（用于分栏左侧） ─── */
+.demo-list { font-size: 13px; }
+.demo-list-item {
+  padding: 10px 16px;
+  border-bottom: 1px solid #F0F2F5;
+  cursor: pointer;
+  color: #1A1A1A;
+  border-left: 3px solid transparent;
+  transition: all 0.15s;
+}
+.demo-list-item:hover { background: #F7F8FA; }
+.demo-list-item--active {
+  background: #E8F5F3 !important;
+  color: #2AA890;
+  font-weight: 500;
+  border-left-color: #2AA890;
+}
+
+/* ─── 空状态占位 ─── */
+.demo-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 180px;
+  color: #B3BAC9;
+  font-size: 13px;
+}
+
+/* ─── 工具栏 ─── */
+.demo-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  padding: 0;
+}
+.demo-toolbar label {
+  color: #6B7790;
+  white-space: nowrap;
+}
+.demo-toolbar select,
+.demo-toolbar input[type="month"],
+.demo-toolbar input[type="text"],
+.demo-toolbar input[type="date"] {
+  height: 28px;
+  border: 1px solid #E8EBF0;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 0 8px;
+  color: #1A1A1A;
+  background: #fff;
+  outline: none;
+}
+.demo-toolbar select:focus,
+.demo-toolbar input:focus {
+  border-color: #2AA890;
+}
+
+/* ─── 网格（用于搜索栏示例） ─── */
+.demo-grid {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+}
+.demo-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.demo-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.demo-grid--2 { grid-template-columns: repeat(2, 1fr); }
+
+/* ─── 统计卡片示例 ─── */
+.demo-stat {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid #E8EBF0;
+  border-radius: 4px;
+  background: #fff;
+}
+.demo-stat__value {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+.demo-stat__label {
+  font-size: 12px;
+  color: #6B7790;
+  margin-top: 4px;
+}

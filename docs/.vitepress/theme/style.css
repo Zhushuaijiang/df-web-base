@@ -1,0 +1,341 @@
+/* ─── df-web-base 文档主题 ─── Claude Code 风格 ─── */
+
+/* ─── 品牌色：专业、沉稳的医疗 HIS 色系 ─── */
+:root {
+  --vp-c-brand-1: #3b8680;
+  --vp-c-brand-2: #2f6e69;
+  --vp-c-brand-3: #265b57;
+  --vp-c-brand-soft: rgba(59, 134, 128, 0.10);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #3b8680 0%, #265b57 100%);
+
+  /* 文档区段圆角 */
+  --df-doc-radius: 8px;
+  --df-doc-border: var(--vp-c-divider);
+  --df-doc-bg: var(--vp-c-bg-soft);
+}
+
+/* ─── 全局排版增强 ─── */
+.vp-doc h1 {
+  margin-top: 0;
+  letter-spacing: -0.02em;
+}
+.vp-doc h2 {
+  margin-top: 2.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+.vp-doc h3 {
+  margin-top: 1.8em;
+}
+
+/* ─── API 表格 ─── */
+.vp-doc table {
+  width: 100%;
+  display: table;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+.vp-doc th {
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+.vp-doc th,
+.vp-doc td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+.vp-doc td:first-child {
+  color: var(--vp-c-brand-1);
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+}
+
+/* ─── 标签 ─── */
+.vp-doc .tip-tag {
+  display: inline-block;
+  padding: 1px 7px;
+  font-size: 12px;
+  border-radius: 4px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.vp-doc .tip-tag--dx {
+  background: rgba(59, 130, 246, 0.08);
+  color: #2563eb;
+}
+.vp-doc .tip-tag--css {
+  background: rgba(34, 197, 94, 0.08);
+  color: #16a34a;
+}
+
+/* ─── DemoBlock 组件样式 ─── */
+.demo-block {
+  border: 1px solid var(--df-doc-border);
+  border-radius: var(--df-doc-radius);
+  margin: 20px 0;
+  overflow: hidden;
+  background: var(--vp-c-bg);
+  transition: border-color 0.2s;
+}
+.demo-block:hover {
+  border-color: var(--vp-c-brand-1);
+}
+.demo-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--df-doc-border);
+  background: var(--df-doc-bg);
+}
+.demo-block__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  margin: 0;
+}
+.demo-block__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.demo-block__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  border-radius: 4px;
+  color: var(--vp-c-text-3);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.demo-block__icon-btn:hover {
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+.demo-block__icon-btn--success {
+  color: #16a34a !important;
+}
+.demo-block__description {
+  padding: 10px 16px 0;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+.demo-block__preview {
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+  background: #E9E9EC;
+}
+/* 布局类组件全宽展示 */
+.demo-block__preview > .df-detail-layout,
+.demo-block__preview > .df-search-layout,
+.demo-block__preview > .df-tree-grid-layout,
+.demo-block__preview > .df-card-layout,
+.demo-block__preview > .df-grid-layout,
+.demo-block__preview > .df-app-shell,
+.demo-block__preview > .df-dashboard-layout,
+.demo-block__preview > .df-form-layout,
+.demo-block__preview > .df-timeline-layout {
+  flex-basis: 100%;
+}
+.demo-block__preview--vertical {
+  flex-direction: column;
+}
+.demo-block__actions {
+  border-top: 1px solid var(--df-doc-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+}
+.demo-block__toggle {
+  background: none;
+  border: none;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 4px 16px;
+  border-radius: 4px;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.demo-block__toggle:hover {
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+.demo-block__copy-inline {
+  background: none;
+  border: 1px solid var(--df-doc-border);
+  color: var(--vp-c-text-3);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+.demo-block__copy-inline:hover {
+  color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+}
+.demo-block__copy-inline--success {
+  color: #16a34a !important;
+  border-color: #16a34a !important;
+}
+.demo-block__toggle-icon {
+  display: inline-block;
+  transition: transform 0.2s;
+  font-size: 12px;
+}
+.demo-block__toggle-icon--open {
+  transform: rotate(180deg);
+}
+.demo-block__code {
+  border-top: 1px solid var(--df-doc-border);
+  background: var(--vp-c-bg-soft);
+  overflow: hidden;
+}
+.demo-block__code :deep(div[class*='language-']) {
+  margin: 0;
+  border-radius: 0;
+}
+.demo-block__code :deep(pre) {
+  margin: 0;
+  border-radius: 0;
+}
+
+/* 代码展开/收起过渡动画 */
+.demo-code-enter-active {
+  transition: all 0.3s ease-out;
+  max-height: 800px;
+}
+.demo-code-leave-active {
+  transition: all 0.25s ease-in;
+  max-height: 800px;
+}
+.demo-code-enter-from,
+.demo-code-leave-to {
+  opacity: 0;
+  max-height: 0;
+}
+
+/* 多个 demo 间距 */
+.demo-block + .demo-block {
+  margin-top: 12px;
+}
+
+/* ── 在线编辑模式 ── */
+.demo-block--editing {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 0 1px var(--vp-c-brand-soft);
+}
+.demo-block__editing-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  padding: 1px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.demo-block__icon-btn--active {
+  color: var(--vp-c-brand-1) !important;
+  background: var(--vp-c-brand-soft);
+}
+.demo-block__textarea {
+  display: block;
+  width: 100%;
+  min-height: 200px;
+  max-height: 600px;
+  padding: 16px;
+  border: none;
+  outline: none;
+  resize: vertical;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--vp-c-text-1);
+  background: var(--vp-code-block-bg, var(--vp-c-bg-soft));
+  tab-size: 2;
+  box-sizing: border-box;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+}
+.demo-block__textarea:focus {
+  box-shadow: inset 0 2px 0 0 var(--vp-c-brand-1);
+}
+.demo-block__error {
+  padding: 8px 16px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #dc2626;
+  background: #fef2f2;
+  border-top: 1px solid #fecaca;
+  font-family: var(--vp-font-family-mono);
+  word-break: break-word;
+}
+.dark .demo-block__error {
+  color: #fca5a5;
+  background: rgba(220, 38, 38, 0.1);
+  border-top-color: rgba(220, 38, 38, 0.2);
+}
+.demo-block__error-label {
+  font-weight: 600;
+  margin-right: 6px;
+}
+.demo-block__placeholder {
+  color: var(--vp-c-text-3);
+  font-size: 13px;
+  font-style: italic;
+}
+.demo-block__action-btn {
+  background: var(--vp-c-brand-1);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 4px;
+  transition: opacity 0.15s;
+}
+.demo-block__action-btn:hover {
+  opacity: 0.85;
+}
+.demo-block__action-btn--secondary {
+  background: none;
+  border: 1px solid var(--df-doc-border);
+  color: var(--vp-c-text-2);
+}
+.demo-block__action-btn--secondary:hover {
+  color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+  opacity: 1;
+}
+
+/* ─── 首页美化 ─── */
+.VPHero .name {
+  font-size: 3rem !important;
+}
+.VPHero .text {
+  font-size: 1.2rem !important;
+}
+
+/* ─── 代码块样式增强 ─── */
+.vp-doc div[class*='language-'] {
+  border-radius: var(--df-doc-radius);
+}

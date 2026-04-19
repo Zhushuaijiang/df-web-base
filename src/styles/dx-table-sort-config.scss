@@ -1,0 +1,122 @@
+.sort-config-wrapper {
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #e4e7ed;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.sort-config {
+  .sort-config-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+
+    .add-sort-btn {
+      cursor: pointer;
+      padding: 2px;
+
+      &:hover {
+        color: #409eff;
+      }
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #303133;
+    }
+  }
+
+  .sort-config-content {
+    .empty-sort {
+      padding: 40px 0;
+      text-align: center;
+    }
+  }
+
+  .drag-item {
+    display: flex !important;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+
+  .sort-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+
+    &:hover {
+      box-shadow: 0 2px 4px rgba(64, 158, 255, 0.1);
+    }
+
+    &.item-select {
+      border-color: #409eff;
+      background-color: #f0f9ff !important;
+    }
+
+    .remove-icon {
+      font-size: 16px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      margin-left: 8px;
+
+      &:hover {
+        color: #f56c6c;
+        transform: scale(1.1);
+      }
+    }
+
+    .sort-item-content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+
+      .sort-index {
+        font-weight: bold;
+        color: #606266;
+        margin-right: 8px;
+        min-width: 24px;
+      }
+
+      .sort-field {
+        flex: 1;
+        color: #303133;
+        margin-right: 8px;
+      }
+
+      .sort-direction {
+        display: flex;
+        align-items: center;
+        color: #909399;
+        font-size: 12px;
+
+        .sort-icon {
+          margin-right: 4px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.custom-sort-wrap {
+  width: 100%;
+
+  textarea {
+    width: 100%;
+    min-height: 200px;
+    outline: none;
+    border: 1px solid #ddd;
+  }
+}

@@ -1,0 +1,586 @@
+/**
+ * DfTable (DxDataGrid) 完整样式
+ * 来源: df-web-bui/src/styles/bui/dx-table.scss
+ * 包含: 表头、数据行、交替行、选中、悬停、排序图标、复选框、滚动条、编辑单元格
+ */
+@use "./dx-table-sort-config";
+
+/* ─── 布局 ─── */
+.df-dx-table {
+  position: relative;
+
+  .df-dx-table-export {
+    position: absolute;
+    right: 0;
+    top: -34px;
+  }
+
+  .buttons-open-icon i,
+  .operations-open-icon i {
+    transform: rotate(90deg);
+    color: #2d6eeb;
+    cursor: pointer;
+  }
+
+  .buttons-open-icon {
+    display: inline-block;
+    cursor: pointer;
+  }
+}
+
+/* ─── Tooltip ─── */
+.dx-cell-pop-tooltip {
+  margin-left: 8px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.dx-cell-pop-tooltip-content {
+  display: inline-block;
+  position: fixed;
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 2000;
+  font-size: 12px;
+  line-height: 1.2;
+  min-width: 10px;
+  word-wrap: break-word;
+  background: #222;
+  color: #fff;
+}
+
+/* ─── 列配置弹窗 ─── */
+.table-column-config {
+  &-container {
+    display: flex;
+
+    .item-select {
+      background-color: #337ab7 !important;
+      color: #fff !important;
+    }
+
+    &-right {
+      margin-left: 16px;
+      height: 400px;
+      overflow-y: scroll;
+      flex: 1;
+
+      .data-source-dialog-body {
+        max-height: 400px;
+        overflow: auto;
+        user-select: text;
+      }
+
+      .data-source-pre {
+        margin: 0;
+        padding: 12px;
+        background: #f5f7fa;
+        border-radius: 4px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 12px;
+        line-height: 1.6;
+        user-select: text;
+        cursor: text;
+      }
+    }
+  }
+}
+
+/* ─── 拖拽列表 ─── */
+.dx-table-drag-list {
+  list-style: none;
+
+  .drag-move {
+    transition: transform 0.3s;
+  }
+
+  .list-item {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: table;
+    border-top: 1px solid #e3e3e3;
+
+    &-content {
+      padding-left: 16px;
+      text-align: left;
+    }
+
+    &-item {
+      display: table-cell;
+    }
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  .item-select {
+    background-color: #337ab7 !important;
+    color: #fff !important;
+  }
+
+  .move-icon {
+    width: 34px;
+    height: 100%;
+    vertical-align: middle;
+    display: table-cell;
+
+    .move-icon-wrap {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.dx-table-config-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hover-block:hover {
+  color: #2d6eeb;
+}
+
+/* ─── DxDataGrid 核心样式 ─── */
+.df-dx-table {
+  $nodata-base64: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCAyOCAyOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4zIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00LjIzNTM1IDE5LjA3NEwxNC4wMTI0IDIzLjQxVjQuMDAyMkw0LjIzNTM1IDYuOTk5OTVWMTkuMDc0WiIgZmlsbD0iI0YzRjNGMyIgc3Ryb2tlPSIjMjkyOTI5IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNC4yMzUzNSAxOS40MTIzTDE0LjAxMjQgMjMuNzQ4NFYxMS4zNDA1TDQuMjM1MzUgN1YxOS40MTIzWiIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzI5MjkyOSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE0LjAxMjUgNFYyMy40MTAxTDIzLjc4OTUgMTkuMDcxOFY3TDE0LjAxMjUgNFoiIGZpbGw9IiNGM0YzRjMiIHN0cm9rZT0iIzI5MjkyOSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIgMTAuNDkzN0wxMS4yNDYyIDE0LjcwNUwxNC4wMTI0IDExLjM0MDVNNC4yMzUzOSA3TDIgMTAuNDkzN1oiIGZpbGw9IndoaXRlIiBzdHJva2U9IiMyOTI5MjkiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNC4wMTI1IDExLjMzODNWMjMuNzQ4NEwyMy43ODk1IDE5LjQxMDFWN0wxNC4wMTI1IDExLjMzODNaIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMjkyOTI5IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTQuMDEyNSAxMS4zMzgzTDE2Ljk0NTYgMTQuNzQ4NEwyNiAxMC4yTDIzLjc4OTUgN0wxNC4wMTI1IDExLjMzODNaIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMjkyOTI5IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjwvZz4KPC9zdmc+Cg==";
+  $sort-base64: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgMS41VjEyLjVMMiA5LjUiIHN0cm9rZT0iI0JCQkNCRiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik05IDEyLjVMOSAxLjVMMTIgNC41IiBzdHJva2U9IiNCQkJDQkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K";
+  $sort-desc-base64: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgMS41VjEyLjVMMiA5LjUiIHN0cm9rZT0iIzI5MjkyOSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik05IDEyLjVMOSAxLjVMMTIgNC41IiBzdHJva2U9IiNCQkJDQkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K";
+  $sort-asc-base64: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgMS41VjEyLjVMMiA5LjUiIHN0cm9rZT0iI0JCQkNCRiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik05IDEyLjVMOSAxLjVMMTIgNC41IiBzdHJva2U9IiMyOTI5MjkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K";
+  $checkbox0-base64: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxyZWN0IHg9IjAuNSIgeT0iMC41IiB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHJ4PSIyLjUiIGZpbGw9IndoaXRlIiBzdHJva2U9IiNCQkJDQkYiLz4NCjwvc3ZnPg0K";
+  $title-checkbox1-base64: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiByeD0iMyIgZmlsbD0iIzM3NzFFMyIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTExLjQwNjEgMy45Njg1OUMxMS4wNjQ0IDMuNjI2ODggMTAuNTEwNCAzLjYyNjg4IDEwLjE2ODcgMy45Njg1OUw1LjgzNzYzIDguMjk5NjJMMy45ODE0NyA2LjQ0MzQ3QzMuNjM5NzYgNi4xMDE3NiAzLjA4NTc0IDYuMTAxNzYgMi43NDQwMyA2LjQ0MzQ3QzIuNDAyMzMgNi43ODUxNyAyLjQwMjMzIDcuMzM5MTkgMi43NDQwMyA3LjY4MDlMNS4yMTg5MSAxMC4xNTU4QzUuNTYwNjIgMTAuNDk3NSA2LjExNDY0IDEwLjQ5NzUgNi40NTYzNCAxMC4xNTU4TDExLjQwNjEgNS4yMDYwM0MxMS43NDc4IDQuODY0MzIgMTEuNzQ3OCA0LjMxMDMgMTEuNDA2MSAzLjk2ODU5WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==";
+  $title-checkbox2-base64: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgcng9IjIuNSIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzM3NzFFMyIvPgo8cmVjdCB4PSI1IiB5PSI1IiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiByeD0iMSIgZmlsbD0iIzM3NzFFMyIvPgo8L3N2Zz4K";
+  $checkbox-disabled-base64: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxyZWN0IHg9IjAuNSIgeT0iMC41IiB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHJ4PSIyLjUiIGZpbGw9IiNFQkVERjIiIHN0cm9rZT0iI0JCQkNCRiIvPg0KPC9zdmc+DQo=";
+  $row-height: 30px;
+  $line-height: 18px;
+  $row-input-height: 28px;
+
+  /* 空数据 */
+  .dx-datagrid-nodata {
+    background-image: url($nodata-base64);
+    background-repeat: no-repeat;
+    background-position: calc(50% - 50px) calc(50% + 1px);
+  }
+
+  .dx-datagrid-table-fixed {
+    box-sizing: border-box;
+    border-right: none;
+  }
+
+  .dx-datagrid-headers {
+    border-bottom: 0;
+  }
+
+  /* 表头 */
+  .dx-header-row,
+  .dx-datagrid-headers.dx-datagrid-nowrap {
+    background-color: #f1f2f2 !important;
+  }
+
+  /* 数据行 */
+  .dx-data-row {
+    color: #1a1a1a;
+    border: 0;
+
+    .df-button {
+      padding: 0;
+    }
+
+    .df-button + .df-button {
+      margin-left: 12px;
+      position: relative;
+    }
+
+    .dx-table-operation-button + .dx-table-operation-button::before {
+      position: absolute;
+      top: 0;
+      left: -8px;
+      content: "|";
+      width: 1px;
+      font-size: 12px;
+      color: #e3e3e3;
+    }
+  }
+
+  .dx-data-row {
+    background-color: #fff;
+  }
+
+  /* 交替行 */
+  .row-alternation-enabled {
+    .dx-data-row > td {
+      border: 1px solid #e3e3e3;
+    }
+
+    .dx-data-row.dx-row-alt {
+      background-color: #fafafa;
+    }
+  }
+
+  /* 悬停 */
+  .dx-data-row.dx-state-hover > td {
+    position: relative;
+    background-color: #fff !important;
+  }
+
+  .dx-data-row.dx-row-alt.dx-state-hover > td {
+    position: relative;
+    background-color: #fafafa !important;
+  }
+
+  /* 选中 / 聚焦 */
+  .dx-data-row.dx-selection > td,
+  .dx-data-row.dx-row-focused > td {
+    color: #1a1a1a !important;
+    position: relative;
+    background-color: #fff !important;
+  }
+
+  .dx-row-alt.dx-data-row.dx-selection > td,
+  .dx-row-alt.dx-data-row.dx-row-focused > td {
+    color: #1a1a1a !important;
+    position: relative;
+    background-color: #fafafa !important;
+  }
+
+  .dx-row-focused.dx-data-row > td {
+    border-bottom-color: #e3e3e3 !important;
+
+    .df-button {
+      color: #2d6eeb !important;
+    }
+
+    .buttons-open-icon i,
+    .operations-open-icon i {
+      color: #2d6eeb !important;
+    }
+
+    .dx-datagrid-group-opened,
+    .dx-datagrid-group-closed,
+    .dx-datagrid-group-collapsed,
+    .dx-datagrid-group-expanded {
+      color: #959595 !important;
+    }
+  }
+
+  .row-alternation-enabled {
+    .dx-row-focused.dx-data-row > td {
+      border-top: 0 !important;
+    }
+
+    .dx-row-focused.dx-data-row:has(+ .dx-data-row) > td {
+      border-bottom: 0 !important;
+    }
+  }
+
+  /* 选中/悬停叠加层 */
+  .dx-data-row.dx-selection > td::after,
+  .dx-row-focused.dx-data-row > td:not(.dx-focused)::after,
+  .dx-data-row.dx-state-hover > td::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .dx-data-row.dx-state-hover > td::after {
+    background-color: rgba(83, 209, 255, 0.2);
+  }
+
+  .dx-data-row.dx-selection > td::after,
+  .dx-row-focused.dx-data-row > td:not(.dx-focused)::after {
+    background-color: rgba(78, 154, 255, 0.2);
+  }
+
+  /* 排序图标 */
+  .dx-sort.dx-sort-down::before,
+  .dx-sort.dx-sort-up::before,
+  .dx-sort.dx-sort-none::before {
+    content: "";
+    background-position: 1px 0;
+    background-size: contain;
+    position: relative;
+    top: -1px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .dx-sort.dx-sort-none {
+    display: inline-block !important;
+  }
+
+  .dx-sort.dx-sort-none::before {
+    background-image: url($sort-base64);
+  }
+
+  .dx-sort.dx-sort-down::before {
+    background-image: url($sort-desc-base64);
+  }
+
+  .dx-sort.dx-sort-up::before {
+    background-image: url($sort-asc-base64);
+  }
+
+  /* 复选框 */
+  .dx-datagrid-checkbox-size {
+    line-height: 0;
+  }
+
+  .dx-header-row .dx-checkbox,
+  .dx-data-row .dx-checkbox {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    .dx-checkbox-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .dx-datagrid .dx-checkbox-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .dx-checkbox-icon {
+    border: 0 !important;
+    background: transparent url($checkbox0-base64) no-repeat;
+  }
+
+  .dx-checkbox-checked .dx-checkbox-icon::before {
+    content: "";
+    position: absolute;
+    margin: 0 !important;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 14px;
+    height: 14px;
+    background: url($title-checkbox1-base64) no-repeat;
+  }
+
+  .dx-state-disabled .dx-checkbox-icon {
+    cursor: no-drop;
+    background: transparent url($checkbox-disabled-base64) no-repeat;
+  }
+
+  .dx-header-row {
+    color: #1a1a1a;
+
+    .dx-column-indicators {
+      float: right !important;
+      margin-left: 4px;
+    }
+
+    .dx-checkbox-icon {
+      border: 0 !important;
+      border-radius: 3px !important;
+      background: transparent url($checkbox0-base64) no-repeat;
+    }
+
+    .dx-checkbox-checked .dx-checkbox-icon::before {
+      content: "";
+      position: absolute;
+      margin: 0 !important;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 14px;
+      height: 14px;
+      background: url($title-checkbox1-base64) no-repeat;
+    }
+
+    .dx-checkbox-indeterminate .dx-checkbox-icon::before {
+      content: "";
+      position: absolute;
+      margin: 0 !important;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 14px;
+      height: 14px;
+      background: url($title-checkbox2-base64) no-repeat;
+    }
+  }
+
+  .dx-header-row:hover {
+    background-color: #eff0f0;
+  }
+
+  /* 行高 & 单元格 */
+  .dx-row.dx-header-row > td,
+  .dx-row.dx-data-row > td {
+    height: $row-height !important;
+    line-height: $line-height;
+    box-sizing: border-box;
+  }
+
+  .dx-row > td,
+  .dx-header-row > td {
+    padding: 4px 6px !important;
+    box-sizing: border-box;
+  }
+
+  .dx-row > td {
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .dx-header-row > td {
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .dx-freespace-row {
+    display: none;
+  }
+
+  .dx-last-cell,
+  .dx-pointer-events-none {
+    border: 0 !important;
+  }
+
+  /* 横向滚动条 */
+  .dx-scrollbar-horizontal * {
+    padding: 0 !important;
+  }
+
+  .dx-scrollbar-horizontal {
+    height: 10px !important;
+    padding-top: 3px;
+    box-sizing: border-box;
+
+    .dx-scrollable-scroll-content {
+      height: 6px !important;
+      border-radius: 3px;
+      background-color: rgba(164, 165, 168, 0.5) !important;
+    }
+
+    .dx-state-invisible .dx-scrollable-scroll-content {
+      background-color: transparent !important;
+    }
+  }
+
+  .dx-scrollable-wrapper {
+    .dx-scrollbar-horizontal.dx-scrollable-scrollbar-active,
+    .dx-scrollbar-horizontal.dx-state-hover {
+      padding: 0;
+      transition: all 0.3s ease;
+
+      .dx-scrollable-scroll-content {
+        height: 10px !important;
+        border-radius: 5px;
+        background-color: rgba(164, 165, 168, 1) !important;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+
+  /* 纵向滚动条 */
+  .dx-scrollbar-vertical * {
+    padding: 0 !important;
+  }
+
+  .dx-scrollbar-vertical {
+    width: 11px !important;
+    transition: background-color 2s ease, border-left 2s ease;
+
+    .dx-scrollable-scroll-content {
+      margin-left: 2px !important;
+      width: 6px !important;
+      background-color: rgba(164, 165, 168, 0.5) !important;
+      border-radius: 3px;
+    }
+
+    .dx-state-invisible .dx-scrollable-scroll-content {
+      background-color: transparent !important;
+    }
+
+    .dx-scrollable-scroll {
+      width: 10px !important;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .dx-scrollable-wrapper {
+    padding: 0;
+
+    .dx-scrollbar-vertical.dx-scrollable-scrollbar-active,
+    .dx-scrollbar-vertical.dx-state-hover {
+      border-bottom: 0 !important;
+      transition: all 0.3s ease;
+
+      .dx-scrollable-scroll-content {
+        margin-left: 0 !important;
+        width: 10px !important;
+        border-radius: 5px;
+        background-color: rgba(164, 165, 168, 1) !important;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+
+  /* 最后一行底边框 */
+  .dx-data-row:not(:has(+ .dx-data-row)) > td {
+    border-bottom: 1px solid #e3e3e3 !important;
+  }
+
+  /* 编辑单元格 */
+  .dx-row .dx-editor-cell:has(input) {
+    padding: 1px !important;
+
+    .df-input__inner,
+    .dx-texteditor-input,
+    input {
+      height: $row-input-height !important;
+      min-height: $row-input-height !important;
+      border-radius: 4px !important;
+      border: 1px solid rgba(55, 113, 227, 0.5);
+    }
+
+    .df-input__icon {
+      line-height: $row-input-height !important;
+    }
+  }
+
+  .dx-row .dx-editor-cell.dx-focused:has(input) {
+    .df-input__inner,
+    .dx-texteditor-input,
+    input {
+      border: 1px solid #3771e3;
+    }
+  }
+
+  .dx-datagrid-focus-overlay {
+    border: 0;
+  }
+}
+
+/* ─── 相邻表格间距（UI规范：16px） ─── */
+.df-dx-table + .df-dx-table {
+  margin-top: var(--df-table-spacing, 16px);
+}

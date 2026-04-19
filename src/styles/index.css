@@ -1,0 +1,9 @@
+/**
+ * df-web-base 样式入口
+ * 子应用引入: import 'df-web-base/styles/index.css'
+ */
+@import './variables.css';
+@import './base.css';
+@import './loading.css';
+@import './dx-table.scss';
+@import './export-btn.scss';

@@ -1,0 +1,220 @@
+/**
+ * df-web-base CSS Design Tokens
+ *
+ * 所有组件样式基于此变量体系，子应用通过覆盖 CSS 变量实现主题定制。
+ * 与 DevExtreme 的 dx-theme 变量并行使用，互不冲突。
+ *
+ * 用法：在主应用或子应用根 CSS 中覆盖变量值
+ * :root { --df-color-primary: #your-brand-color; }
+ */
+
+:root {
+  /* ═══════════════════════════════════════════
+     Color System -- 颜色体系
+     ═══════════════════════════════════════════ */
+
+  /* ── Primary -- 主色调（医疗蓝绿） ───────── */
+  --df-color-primary-50:  #E8F5F3;
+  --df-color-primary-100: #C5E8E3;
+  --df-color-primary-200: #9EDAD1;
+  --df-color-primary-300: #6DCAB8;
+  --df-color-primary-400: #47BEA5;
+  --df-color-primary-500: #2AA890;
+  --df-color-primary-600: #239B84;
+  --df-color-primary-700: #1B8A74;
+  --df-color-primary-800: #147964;
+  --df-color-primary-900: #0A5E4A;
+
+  --df-color-primary:          var(--df-color-primary-500);
+  --df-color-primary-light:    var(--df-color-primary-400);
+  --df-color-primary-dark:     var(--df-color-primary-700);
+  --df-color-primary-contrast: #ffffff;
+
+  /* ── Secondary -- 辅助色（深灰蓝） ──────── */
+  --df-color-secondary-50:  #F5F6F8;
+  --df-color-secondary-100: #E8EBF0;
+  --df-color-secondary-200: #D1D6E0;
+  --df-color-secondary-300: #B3BAC9;
+  --df-color-secondary-400: #8E98AD;
+  --df-color-secondary-500: #6B7790;
+  --df-color-secondary-600: #555F75;
+  --df-color-secondary-700: #40495C;
+  --df-color-secondary-800: #2B3343;
+  --df-color-secondary-900: #1A1A1A;
+
+  /* ── Semantic -- 语义色 ─────────────────── */
+  --df-color-success:       #52C41A;
+  --df-color-success-light: #F6FFED;
+  --df-color-warning:       #FAAD14;
+  --df-color-warning-light: #FFFBE6;
+  --df-color-error:         #F5222D;
+  --df-color-error-light:   #FFF2F0;
+  --df-color-info:          #1890FF;
+  --df-color-info-light:    #E6F7FF;
+
+  /* ── Neutral / Text ─────────────────────── */
+  --df-color-text-primary:     #1A1A1A;
+  --df-color-text-secondary:   #6B7790;
+  --df-color-text-placeholder: #8C939D;
+  --df-color-text-disabled:    #D1D6E0;
+  --df-color-text-hint:        #8C939D;
+
+  /* ── Background ─────────────────────────── */
+  --df-color-bg-page:       #E9E9EC;
+  --df-color-bg-surface:    #FFFFFF;
+  --df-color-bg-elevated:   #FFFFFF;
+  --df-color-bg-stripe:     #fafafa;
+  --df-color-bg-hover:      rgba(83, 209, 255, 0.15);
+  --df-color-bg-active:     #eff0f0;
+  --df-color-bg-selected:   rgba(78, 154, 255, 0.2);
+
+  /* ── Border ─────────────────────────────── */
+  --df-color-border:        #e3e3e3;
+  --df-color-border-light:  #f0f2f5;
+  --df-color-border-dark:   #d1d6e0;
+  --df-color-border-focus:  #3771e3;
+  --df-color-divider:       #e3e3e3;
+
+  /* ── Tag / Badge ────────────────────────── */
+  --df-color-tag-bg:   var(--df-color-secondary-100);
+  --df-color-tag-text: var(--df-color-secondary-600);
+  --df-color-error-bg: var(--df-color-error-light);
+
+  /* ═══════════════════════════════════════════
+     Spacing System -- 间距体系（4px 基数）
+     ═══════════════════════════════════════════ */
+  --df-spacing-0:  0px;
+  --df-spacing-xs: 4px;
+  --df-spacing-sm: 8px;
+  --df-spacing-md: 16px;
+  --df-spacing-lg: 24px;
+  --df-spacing-xl: 32px;
+  --df-spacing-1:  4px;
+  --df-spacing-2:  8px;
+  --df-spacing-3:  12px;
+  --df-spacing-4:  16px;
+  --df-spacing-5:  20px;
+  --df-spacing-6:  24px;
+  --df-spacing-8:  32px;
+  --df-spacing-10: 40px;
+  --df-spacing-12: 48px;
+  --df-spacing-16: 64px;
+
+  /* ═══════════════════════════════════════════
+     Typography -- 字体体系
+     ═══════════════════════════════════════════ */
+  --df-font-family:        -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                           'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --df-font-family-mono:   'SFMono-Regular', 'Consolas', 'Liberation Mono',
+                           'Menlo', monospace;
+  --df-font-family-number: 'DIN Alternate', 'Helvetica Neue', sans-serif;
+
+  --df-font-size-xs: 12px;
+  --df-font-size-sm: 13px;
+  --df-font-size-md: 14px;
+  --df-font-size-lg: 16px;
+  --df-font-size-xl: 18px;
+  --df-font-size-2xl: 20px;
+  --df-font-size-h1: 24px;
+  --df-font-size-h0: 30px;
+
+  --df-line-height-tight:   1.25;
+  --df-line-height-base:    1.5;
+  --df-line-height-relaxed: 1.75;
+
+  /* ── HIS 行高规范 ──────────────────────── */
+  --df-line-height-standard: 22px;    /* UI规范：标准行高 */
+  --df-line-height-table-data: 18px;  /* UI规范：表格数据行高（紧凑） */
+
+  --df-font-weight-normal:   400;
+  --df-font-weight-medium:   500;
+  --df-font-weight-semibold: 600;
+  --df-font-weight-bold:     700;
+
+  /* ═══════════════════════════════════════════
+     Border Radius -- 圆角体系
+     ═══════════════════════════════════════════ */
+  --df-radius-none: 0px;
+  --df-radius-sm:   4px;      /* 按钮/标签 */
+  --df-radius-base: 4px;      /* 输入框（UI规范：4px标准圆角） */
+  --df-radius-md:   8px;      /* 卡片 */
+  --df-radius-lg:   12px;     /* 弹窗 */
+  --df-radius-xl:   16px;     /* 大面板 */
+  --df-radius-full: 9999px;
+
+  /* ═══════════════════════════════════════════
+     Shadow -- 阴影体系
+     ═══════════════════════════════════════════ */
+  --df-shadow-none: none;
+  --df-shadow-sm:   0 1px 2px rgba(26, 32, 48, 0.06);
+  --df-shadow-md:   0 4px 8px rgba(26, 32, 48, 0.08);
+  --df-shadow-lg:   0 8px 24px rgba(26, 32, 48, 0.12);
+  --df-shadow-xl:   0 16px 48px rgba(26, 32, 48, 0.16);
+  --df-shadow-dialog: var(--df-shadow-lg);
+
+  /* ═══════════════════════════════════════════
+     Motion -- 动效体系
+     ═══════════════════════════════════════════ */
+  --df-transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --df-transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --df-transition-slow:   350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --df-ease-standard:   cubic-bezier(0.4, 0, 0.2, 1);
+  --df-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --df-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ═══════════════════════════════════════════
+     Z-Index -- 层级体系
+     ═══════════════════════════════════════════ */
+  --df-z-base:            1;
+  --df-z-dropdown:        100;
+  --df-z-sticky:          200;
+  --df-z-overlay:         300;
+  --df-z-modal-backdrop:  300;
+  --df-z-modal:           400;
+  --df-z-popover:         500;
+  --df-z-toast:           500;
+  --df-z-tooltip:         600;
+
+  /* ═══════════════════════════════════════════
+     Component Tokens -- 组件级变量
+     ═══════════════════════════════════════════ */
+
+  /* ── Button ─────────────────────────────── */
+  --df-btn-height-sm: 28px;
+  --df-btn-height-md: 32px;
+  --df-btn-height-lg: 40px;
+
+  /* ── Form Control ───────────────────────── */
+  --df-input-height:       32px;
+  --df-input-padding-x:    12px;
+  --df-input-border-color: var(--df-color-border);
+  --df-input-border-radius: var(--df-radius-base);
+  --df-input-focus-shadow: 0 0 0 2px var(--df-color-primary-100);
+
+  /* ── Table ──────────────────────────────── */
+  --df-table-row-height:    30px;
+  --df-table-header-bg:     #f1f2f2;
+  --df-table-header-weight: 500;
+  --df-table-row-bg:        #ffffff;
+  --df-table-stripe-bg:     #fafafa;
+  --df-table-hover-bg:      rgba(83, 209, 255, 0.2);
+  --df-table-selected-bg:   rgba(78, 154, 255, 0.2);
+
+  /* ── HIS 间距规范 ──────────────────────── */
+  --df-form-gutter:   12px;           /* UI规范：表单间距 */
+  --df-table-spacing: 16px;           /* UI规范：表格间距 */
+
+  /* ── Dialog / Popup ─────────────────────── */
+  --df-dialog-radius:      var(--df-radius-lg);
+  --df-dialog-shadow:      var(--df-shadow-lg);
+  --df-dialog-title-size:  var(--df-font-size-xl);
+  --df-dialog-overlay-bg:  rgba(26, 32, 48, 0.45);
+  --df-dialog-default-width:  90%;    /* UI规范：弹窗默认宽度 */
+  --df-dialog-default-height: 80vh;   /* UI规范：弹窗默认高度 */
+
+  /* ── Tag ────────────────────────────────── */
+  --df-tag-height:   22px;
+  --df-tag-padding:  0 8px;
+  --df-tag-font-size: var(--df-font-size-xs);
+  --df-tag-radius:   var(--df-radius-sm);
+}

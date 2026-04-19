@@ -1,0 +1,107 @@
+{
+  "name": "df-web-base",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/df-web-base.umd.js",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/df-web-base.mjs",
+      "require": "./dist/df-web-base.umd.js",
+      "types": "./src/index.ts"
+    },
+    "./resolver": {
+      "import": "./src/resolver.ts",
+      "types": "./src/resolver.ts"
+    },
+    "./styles/*": "./src/styles/*"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{ts,vue,css}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,vue,css}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "preview": "vite preview",
+    "check-dx": "tsx scripts/check-no-devextreme.ts",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "docs:gen": "node scripts/gen-component-docs.mjs",
+    "check:all": "npm run type-check && npm run test && npm run build && npm run docs:build",
+    "check:quick": "npm run type-check && npm run test"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,scss}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "devextreme": "25.2",
+    "devextreme-vue": "25.2",
+    "vue": "^3.4.38",
+    "xlsx": "^0.18.5"
+  },
+  "peerDependencies": {
+    "axios": "^1.0.0",
+    "vue": "^3.4.38",
+    "devextreme": "25.2",
+    "devextreme-vue": "25.2"
+  },
+  "peerDependenciesMeta": {
+    "axios": {
+      "optional": true
+    },
+    "vue": {
+      "optional": false
+    },
+    "devextreme": {
+      "optional": false
+    },
+    "devextreme-vue": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.7",
+    "@types/node": "^22.7.6",
+    "@typescript-eslint/eslint-plugin": "^8.8.1",
+    "@typescript-eslint/parser": "^8.8.1",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitest/coverage-v8": "^2.1.3",
+    "@vue/test-utils": "^2.4.6",
+    "axios": "^1.15.0",
+    "eslint": "^9.12.0",
+    "eslint-plugin-vue": "^9.29.0",
+    "exceljs": "^4.4.0",
+    "fake-indexeddb": "^6.2.5",
+    "file-saver": "^2.0.5",
+    "husky": "^9.1.7",
+    "jsdom": "^25.0.1",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.3.3",
+    "sass-embedded": "^1.99.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.8",
+    "vitepress": "^1.6.4",
+    "vitest": "^2.1.3",
+    "vue-tsc": "^2.1.6"
+  }
+}
