@@ -1,2 +1,2 @@
-export { default as DfFilterBuilder } from './DfFilterBuilder.vue'
-export type { DfFilterField, DfFilterValue } from './types'
+// Direct re-export of DevExtreme component — no wrapper
+export { DxFilterBuilder as DfFilterBuilder } from 'devextreme-vue/filter-builder'

@@ -1,2 +1,2 @@
-export { default as DfValidator } from './DfValidator.vue'
-export type { DfValidatorProps, DfValidationRule, DfValidationResult, DfRequiredRule, DfRangeRule, DfStringLengthRule, DfPatternRule, DfEmailRule, DfCompareRule, DfCustomRule, DfAsyncRule } from './types'
+// Direct re-export of DevExtreme component — no wrapper
+export { DxValidator as DfValidator } from 'devextreme-vue/validator'

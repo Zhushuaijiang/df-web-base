@@ -1,4 +1,2 @@
-import DfColorPicker from './DfColorPicker.vue'
-
-export { DfColorPicker }
-export default DfColorPicker
+// Direct re-export of DevExtreme component — no wrapper
+export { DxColorBox as DfColorPicker } from 'devextreme-vue/color-box'

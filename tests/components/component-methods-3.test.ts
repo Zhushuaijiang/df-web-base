@@ -27,7 +27,6 @@ function mountDf(component: any, props: Record<string, any> = {}, slots: Record<
 
 import { DfCascader } from '../../src/components/df-cascader'
 import { DfTransfer } from '../../src/components/df-transfer'
-import { DfColorPicker } from '../../src/components/df-color-picker'
 import { DfSlider } from '../../src/components/df-slider'
 import { DfProgress } from '../../src/components/df-progress'
 import { DfBadge } from '../../src/components/df-badge'
@@ -156,34 +155,8 @@ describe('DfTransfer 方法', () => {
 })
 
 // ═══════════════════════════════════════════
-// DfColorPicker
+// DfColorPicker — now a direct re-export of DxColorBox, skip wrapper tests
 // ═══════════════════════════════════════════
-describe('DfColorPicker 方法', () => {
-  it('渲染颜色值', () => {
-    const w = mountDf(DfColorPicker, { modelValue: '#ff0000' })
-    expect(w.html()).toContain('#ff0000')
-  })
-
-  it('handleChange emit', async () => {
-    const w = mountDf(DfColorPicker, { modelValue: '#ff0000' })
-    const trigger = w.find('.df-color-picker__trigger, .df-color-picker')
-    if (trigger.exists()) {
-      await trigger.trigger('click')
-      await nextTick()
-    }
-    expect(w.html()).toBeTruthy()
-  })
-
-  it('disabled 不可操作', () => {
-    const w = mountDf(DfColorPicker, { modelValue: '#ff0000', disabled: true })
-    expect(w.html()).toContain('disabled')
-  })
-
-  it('showAlpha 属性', () => {
-    const w = mountDf(DfColorPicker, { modelValue: 'rgba(255,0,0,0.5)', showAlpha: true })
-    expect(w.html()).toBeTruthy()
-  })
-})
 
 // ═══════════════════════════════════════════
 // DfSlider

@@ -1,1 +1,2 @@
-export { default as DfSankey } from './DfSankey.vue'
+// Direct re-export of DevExtreme component — no wrapper
+export { DxSankey as DfSankey } from 'devextreme-vue/sankey'

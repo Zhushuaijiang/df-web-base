@@ -1,2 +1,2 @@
-export { default as DfPivotGrid } from './DfPivotGrid.vue'
-export type { DfPivotGridProps, DfPivotGridDataSource, DfPivotGridField } from './types'
+// Direct re-export of DevExtreme component — no wrapper
+export { DxPivotGrid as DfPivotGrid } from 'devextreme-vue/pivot-grid'

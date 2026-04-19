@@ -1,2 +1,2 @@
-export { default as DfCardView } from './DfCardView.vue'
-export type { DfCardViewProps, DfCardViewColumn, DfCardViewDataSource, DfCardViewSearchPanel, DfCardViewPaging, DfCardViewPager } from './types'
+// Direct re-export of DevExtreme component — no wrapper
+export { DxCardView as DfCardView } from 'devextreme-vue/card-view'

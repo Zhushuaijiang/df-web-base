@@ -18,8 +18,6 @@ export type { DfChartProps, DfChartSeries, DfPieChartProps } from '../components
 export type { DfToolbarItem } from '../components/df-toolbar'
 export type { DfSchedulerProps, DfAppointment } from '../components/df-scheduler'
 export type { DfSchedulerResource } from '../components/df-scheduler/types'
-export type { DfFilterField, DfFilterValue } from '../components/df-filter-builder'
-export type { DfFilterOperation } from '../components/df-filter-builder/types'
 
 // Batch 15: 通用布局组件类型
 export type {

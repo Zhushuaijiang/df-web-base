@@ -1,2 +1,2 @@
-export { default as DfDiagram } from './DfDiagram.vue'
-export type { DfDiagramProps, DfDiagramCustomShape, DfDiagramToolbox, DfDiagramToolboxGroup, DfDiagramDataSource } from './types'
+// Direct re-export of DevExtreme component — no wrapper
+export { DxDiagram as DfDiagram } from 'devextreme-vue/diagram'

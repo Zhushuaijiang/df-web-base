@@ -1,1 +1,2 @@
-export { default as DfDxTabs } from './DfDxTabs.vue'
+// Direct re-export of DevExtreme component — no wrapper
+export { DxTabs as DfDxTabs } from 'devextreme-vue/tabs'

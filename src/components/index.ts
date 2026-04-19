@@ -424,7 +424,6 @@ export type { DfToolbarItem } from './df-toolbar'
 export { DfScheduler } from './df-scheduler'
 export type { DfSchedulerProps, DfAppointment } from './df-scheduler'
 export { DfFilterBuilder } from './df-filter-builder'
-export type { DfFilterField, DfFilterValue } from './df-filter-builder'
 export { DfTextEditor } from './df-text-editor'
 
 // Batch 9: DevExtreme 简单直传组件
@@ -448,7 +447,6 @@ export { DfRangeSlider } from './df-range-slider'
 export { DfRecurrenceEditor } from './df-recurrence-editor'
 export { DfDropDownButton } from './df-drop-down-button'
 export { DfValidator } from './df-validator'
-export type { DfValidatorProps, DfValidationRule, DfValidationResult, DfRequiredRule, DfRangeRule, DfStringLengthRule, DfPatternRule, DfEmailRule, DfCompareRule, DfCustomRule, DfAsyncRule } from './df-validator'
 export { DfValidationGroup } from './df-validation-group'
 export { DfValidationSummary } from './df-validation-summary'
 export { DfStepper } from './df-stepper'
@@ -463,9 +461,7 @@ export { DfPolarChart } from './df-polar-chart'
 export { DfSankey } from './df-sankey'
 export { DfTreeMap } from './df-tree-map'
 export { DfRangeSelector } from './df-range-selector'
-export type { DfRangeSelectorProps, DfRangeSelectorScale, DfRangeSelectorChart, DfRangeSelectorSliderMarker, DfRangeSelectorBehavior } from './df-range-selector'
 export { DfCardView } from './df-card-view'
-export type { DfCardViewProps, DfCardViewColumn, DfCardViewDataSource, DfCardViewSearchPanel, DfCardViewPaging, DfCardViewPager } from './df-card-view'
 export { DfMultiView } from './df-multi-view'
 
 // Batch 12: DevExtreme 集合/布局组件
@@ -474,7 +470,6 @@ export { DfResponsiveBox } from './df-responsive-box'
 export { DfSplitter } from './df-splitter'
 export { DfDraggable } from './df-draggable'
 export { DfPivotGrid } from './df-pivot-grid'
-export type { DfPivotGridProps, DfPivotGridDataSource, DfPivotGridField } from './df-pivot-grid'
 export { DfDxTabs } from './df-dx-tabs'
 export { DfDxPopover } from './df-dx-popover'
 export { DfDxContextMenu } from './df-dx-context-menu'
@@ -488,9 +483,7 @@ export { DfSortable } from './df-sortable'
 
 // Batch 14: DevExtreme 复杂组件
 export { DfDiagram } from './df-diagram'
-export type { DfDiagramProps, DfDiagramCustomShape, DfDiagramToolbox, DfDiagramToolboxGroup, DfDiagramDataSource } from './df-diagram'
 export { DfGantt } from './df-gantt'
-export type { DfGanttProps, DfGanttTask, DfGanttDependency, DfGanttResource, DfGanttResourceAssignment, DfGanttScaleType } from './df-gantt'
 
 // Batch 15: 通用布局组件
 export {

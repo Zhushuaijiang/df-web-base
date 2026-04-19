@@ -1,1 +1,2 @@
-export { default as DfDxPopover } from './DfDxPopover.vue'
+// Direct re-export of DevExtreme component — no wrapper
+export { DxPopover as DfDxPopover } from 'devextreme-vue/popover'

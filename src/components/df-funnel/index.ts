@@ -1,1 +1,2 @@
-export { default as DfFunnel } from './DfFunnel.vue'
+// Direct re-export of DevExtreme component — no wrapper
+export { DxFunnel as DfFunnel } from 'devextreme-vue/funnel'

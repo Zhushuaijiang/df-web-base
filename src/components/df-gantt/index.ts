@@ -1,2 +1,2 @@
-export { default as DfGantt } from './DfGantt.vue'
-export type { DfGanttProps, DfGanttTask, DfGanttDependency, DfGanttResource, DfGanttResourceAssignment, DfGanttScaleType } from './types'
+// Direct re-export of DevExtreme component — no wrapper
+export { DxGantt as DfGantt } from 'devextreme-vue/gantt'
