@@ -120,7 +120,7 @@ const trendClass = computed(() =>
   width: 44px;
   height: 44px;
   border-radius: var(--df-radius-md, 8px);
-  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--df-color-bg-secondary, #f0f0f0) 25%, var(--df-color-bg-tertiary, #e8e8e8) 50%, var(--df-color-bg-secondary, #f0f0f0) 75%);
   background-size: 200% 100%;
   animation: df-skeleton-pulse 1.5s ease-in-out infinite;
 }
@@ -136,7 +136,7 @@ const trendClass = computed(() =>
   height: 24px;
   width: 60%;
   border-radius: var(--df-radius-sm, 4px);
-  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--df-color-bg-secondary, #f0f0f0) 25%, var(--df-color-bg-tertiary, #e8e8e8) 50%, var(--df-color-bg-secondary, #f0f0f0) 75%);
   background-size: 200% 100%;
   animation: df-skeleton-pulse 1.5s ease-in-out infinite;
 }
@@ -145,7 +145,7 @@ const trendClass = computed(() =>
   height: 14px;
   width: 80%;
   border-radius: var(--df-radius-sm, 4px);
-  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--df-color-bg-secondary, #f0f0f0) 25%, var(--df-color-bg-tertiary, #e8e8e8) 50%, var(--df-color-bg-secondary, #f0f0f0) 75%);
   background-size: 200% 100%;
   animation: df-skeleton-pulse 1.5s ease-in-out infinite;
 }
@@ -169,11 +169,11 @@ const trendClass = computed(() =>
   color: var(--df-color-primary, #1890ff);
 }
 
-.df-stat-card__icon--blue { background: #ecf5ff; color: #1890ff; }
-.df-stat-card__icon--green { background: #f0f9eb; color: #67c23a; }
-.df-stat-card__icon--orange { background: #fdf6ec; color: #e6a23c; }
-.df-stat-card__icon--red { background: #fef0f0; color: #f56c6c; }
-.df-stat-card__icon--purple { background: #f4ecfb; color: #9b59b6; }
+.df-stat-card__icon--blue { background: var(--df-color-primary-bg, #ecf5ff); color: var(--df-color-primary, #1890ff); }
+.df-stat-card__icon--green { background: var(--df-color-success-bg, #f0f9eb); color: var(--df-color-success, #67c23a); }
+.df-stat-card__icon--orange { background: var(--df-color-warning-bg, #fdf6ec); color: var(--df-color-warning, #e6a23c); }
+.df-stat-card__icon--red { background: var(--df-color-error-bg, #fef0f0); color: var(--df-color-error, #f56c6c); }
+.df-stat-card__icon--purple { background: var(--df-color-info-bg, #f4ecfb); color: var(--df-color-info, #9b59b6); }
 
 .df-stat-card__icon-default {
   font-size: var(--df-font-size-xl, 18px);
@@ -216,12 +216,12 @@ const trendClass = computed(() =>
 }
 
 .df-stat-card__trend--up {
-  color: #f56c6c;
-  background: #fef0f0;
+  color: var(--df-color-error, #f56c6c);
+  background: var(--df-color-error-bg, #fef0f0);
 }
 
 .df-stat-card__trend--down {
-  color: #67c23a;
-  background: #f0f9eb;
+  color: var(--df-color-success, #67c23a);
+  background: var(--df-color-success-bg, #f0f9eb);
 }
 </style>

@@ -16,8 +16,8 @@
           <span>{{ title }}</span>
         </div>
         <div class="df-popconfirm__action">
-          <button class="df-popconfirm__btn df-popconfirm__btn--cancel" @click="handleCancel">{{ cancelButtonText }}</button>
-          <button class="df-popconfirm__btn df-popconfirm__btn--confirm" @click="handleConfirm">{{ confirmButtonText }}</button>
+          <DxButton :text="cancelButtonText" styling-mode="outlined" type="normal" @click="handleCancel" />
+          <DxButton :text="confirmButtonText" type="default" styling-mode="contained" @click="handleConfirm" />
         </div>
       </div>
     </template>
@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { DxButton } from 'devextreme-vue/button'
 import DfPopover from '../df-popover/DfPopover.vue'
 
 withDefaults(defineProps<{
@@ -65,11 +66,4 @@ function handleCancel() { visible.value = false; emit('cancel') }
 .df-popconfirm__main { display: flex; align-items: center; gap: 6px; font-size: 14px; margin-bottom: 12px; }
 .df-popconfirm__icon { font-size: 16px; }
 .df-popconfirm__action { display: flex; justify-content: flex-end; gap: 8px; }
-.df-popconfirm__btn {
-  padding: 4px 12px; border-radius: var(--df-radius-sm, 3px); font-size: var(--df-font-size-xs, 12px); cursor: pointer; border: 1px solid var(--df-color-border, #dcdfe6);
-  background: var(--df-color-bg-surface, #fff); color: var(--df-color-text-secondary, #606266);
-  box-sizing: border-box;
-}
-.df-popconfirm__btn--confirm { background: var(--df-color-primary, #409eff); color: #fff; border-color: var(--df-color-primary, #409eff); }
-.df-popconfirm__btn:hover { opacity: .85; }
 </style>

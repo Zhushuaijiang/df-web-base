@@ -3,40 +3,36 @@
     <!-- Left panel -->
     <div class="df-transfer__panel">
       <div class="df-transfer__header">
-        <label><input type="checkbox" :checked="leftAllChecked" :indeterminate="leftIndeterminate" @change="toggleLeftAll" /> {{ titles[0] || '列表 1' }}</label>
+        <label class="df-transfer__header-label"><DxCheckBox :value="leftAllChecked" :element-attr="{ class: 'df-transfer__header-check' }" @value-changed="toggleLeftAll" /> {{ titles[0] || '列表 1' }}</label>
         <span class="df-transfer__count">{{ leftChecked.length }}/{{ leftData.length }}</span>
       </div>
       <div v-if="filterable" class="df-transfer__filter">
-        <input v-model="leftFilter" type="text" :placeholder="filterPlaceholder" class="df-transfer__filter-input" />
+        <DxTextBox :value="leftFilter" value-change-event="input" :placeholder="filterPlaceholder" @value-changed="onLeftFilterChange" />
       </div>
       <ul class="df-transfer__list">
         <li v-for="item in filteredLeftData" :key="item[keyProp]" class="df-transfer__item" :class="{ 'is-disabled': item[disabledProp] }">
-          <label><input v-model="leftChecked" type="checkbox" :value="item[keyProp]" :disabled="item[disabledProp]" /> {{ item[labelProp] }}</label>
+          <label><DxCheckBox :value="leftChecked.includes(item[keyProp])" :disabled="item[disabledProp]" @value-changed="onLeftItemCheck(item[keyProp], $event)" /> {{ item[labelProp] }}</label>
         </li>
         <li v-if="!filteredLeftData.length" class="df-transfer__empty">无数据</li>
       </ul>
     </div>
     <!-- Buttons -->
     <div class="df-transfer__buttons">
-      <button class="df-transfer__btn" :disabled="!leftChecked.length" @click="moveToRight">
-        <i class="dx-icon-chevronright" />
-      </button>
-      <button class="df-transfer__btn" :disabled="!rightChecked.length" @click="moveToLeft">
-        <i class="dx-icon-chevronleft" />
-      </button>
+      <DxButton icon="chevronright" :disabled="!leftChecked.length" @click="moveToRight" />
+      <DxButton icon="chevronleft" :disabled="!rightChecked.length" @click="moveToLeft" />
     </div>
     <!-- Right panel -->
     <div class="df-transfer__panel">
       <div class="df-transfer__header">
-        <label><input type="checkbox" :checked="rightAllChecked" :indeterminate="rightIndeterminate" @change="toggleRightAll" /> {{ titles[1] || '列表 2' }}</label>
+        <label class="df-transfer__header-label"><DxCheckBox :value="rightAllChecked" :element-attr="{ class: 'df-transfer__header-check' }" @value-changed="toggleRightAll" /> {{ titles[1] || '列表 2' }}</label>
         <span class="df-transfer__count">{{ rightChecked.length }}/{{ rightData.length }}</span>
       </div>
       <div v-if="filterable" class="df-transfer__filter">
-        <input v-model="rightFilter" type="text" :placeholder="filterPlaceholder" class="df-transfer__filter-input" />
+        <DxTextBox :value="rightFilter" value-change-event="input" :placeholder="filterPlaceholder" @value-changed="onRightFilterChange" />
       </div>
       <ul class="df-transfer__list">
         <li v-for="item in filteredRightData" :key="item[keyProp]" class="df-transfer__item" :class="{ 'is-disabled': item[disabledProp] }">
-          <label><input v-model="rightChecked" type="checkbox" :value="item[keyProp]" :disabled="item[disabledProp]" /> {{ item[labelProp] }}</label>
+          <label><DxCheckBox :value="rightChecked.includes(item[keyProp])" :disabled="item[disabledProp]" @value-changed="onRightItemCheck(item[keyProp], $event)" /> {{ item[labelProp] }}</label>
         </li>
         <li v-if="!filteredRightData.length" class="df-transfer__empty">无数据</li>
       </ul>
@@ -46,6 +42,9 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
+import { DxButton } from 'devextreme-vue/button'
+import { DxTextBox } from 'devextreme-vue/text-box'
+import { DxCheckBox } from 'devextreme-vue/check-box'
 
 const props = withDefaults(defineProps<{
   modelValue?: Array<string | number>
@@ -123,6 +122,28 @@ function moveToLeft() {
   rightChecked.value = []
 }
 
+function onLeftFilterChange(e: { value?: string }) {
+  leftFilter.value = e.value ?? ''
+}
+function onRightFilterChange(e: { value?: string }) {
+  rightFilter.value = e.value ?? ''
+}
+
+function onLeftItemCheck(key: string | number, e: { value?: boolean }) {
+  if (e.value) {
+    leftChecked.value = [...leftChecked.value, key]
+  } else {
+    leftChecked.value = leftChecked.value.filter(k => k !== key)
+  }
+}
+function onRightItemCheck(key: string | number, e: { value?: boolean }) {
+  if (e.value) {
+    rightChecked.value = [...rightChecked.value, key]
+  } else {
+    rightChecked.value = rightChecked.value.filter(k => k !== key)
+  }
+}
+
 watch(leftChecked, v => emit('left-check-change', v))
 watch(rightChecked, v => emit('right-check-change', v))
 </script>
@@ -131,9 +152,9 @@ watch(rightChecked, v => emit('right-check-change', v))
 .df-transfer { display: inline-flex; align-items: center; gap: 12px; }
 .df-transfer__panel { width: 200px; border: 1px solid var(--df-color-border, #e4e7ed); border-radius: 4px; overflow: hidden; }
 .df-transfer__header { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--df-color-bg-secondary, #f5f7fa); font-size: var(--df-font-size-md, 14px); border-bottom: 1px solid var(--df-color-border, #e4e7ed); }
+.df-transfer__header-label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
 .df-transfer__count { font-size: 12px; color: var(--df-color-text-secondary, #909399); }
 .df-transfer__filter { padding: 8px; }
-.df-transfer__filter-input { width: 100%; padding: 4px 8px; border: 1px solid var(--df-color-border, #dcdfe6); border-radius: var(--df-radius-sm, 4px); font-size: var(--df-font-size-sm, 13px); box-sizing: border-box; }
 .df-transfer__list { list-style: none; margin: 0; padding: 4px 0; max-height: 240px; overflow-y: auto; }
 .df-transfer__item { padding: 4px 12px; font-size: 14px; cursor: pointer; }
 .df-transfer__item:hover { background: var(--df-color-bg-secondary, #f5f7fa); }
@@ -141,7 +162,4 @@ watch(rightChecked, v => emit('right-check-change', v))
 .df-transfer__item label { display: flex; align-items: center; gap: 6px; cursor: inherit; }
 .df-transfer__empty { padding: 20px; text-align: center; color: var(--df-color-text-disabled, #c0c4cc); font-size: var(--df-font-size-md, 14px); }
 .df-transfer__buttons { display: flex; flex-direction: column; gap: 8px; }
-.df-transfer__btn { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--df-color-border, #dcdfe6); background: var(--df-color-bg-surface, #fff); cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.df-transfer__btn:not(:disabled):hover { color: var(--df-color-primary, #409eff); border-color: var(--df-color-primary, #409eff); }
-.df-transfer__btn:disabled { color: var(--df-color-text-disabled, #c0c4cc); cursor: not-allowed; }
 </style>

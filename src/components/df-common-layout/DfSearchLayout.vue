@@ -12,21 +12,23 @@
       <div class="df-search-layout__search-bar">
         <div class="df-search-layout__search-actions">
           <slot name="searchActions" :collapsed="isCollapsed" :loading="loading">
-            <button
-              class="df-search-layout__btn df-search-layout__btn--primary"
+            <DxButton
+              type="default"
+              styling-mode="contained"
               :disabled="loading"
               @click="handleSearch"
             >
               <span v-if="loading" class="df-search-layout__spinner" />
               {{ searchText }}
-            </button>
-            <button
-              class="df-search-layout__btn"
+            </DxButton>
+            <DxButton
+              type="normal"
+              styling-mode="outlined"
               :disabled="loading"
               @click="handleReset"
             >
               {{ resetText }}
-            </button>
+            </DxButton>
           </slot>
         </div>
 
@@ -58,6 +60,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { DxButton } from 'devextreme-vue/button'
 import type { DfSearchLayoutProps } from './types'
 
 const props = withDefaults(defineProps<DfSearchLayoutProps>(), {
@@ -134,43 +137,6 @@ defineExpose({
   display: flex;
   align-items: center;
   gap: var(--df-spacing-sm, 8px);
-}
-
-.df-search-layout__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--df-spacing-xs, 4px);
-  height: var(--df-btn-height-md, 32px);
-  padding: 0 var(--df-spacing-4, 16px);
-  border: 1px solid var(--df-color-border, #e3e3e3);
-  border-radius: var(--df-radius-sm, 4px);
-  font-size: var(--df-font-size-sm, 13px);
-  background: var(--df-color-bg-surface, #fff);
-  color: var(--df-color-text-secondary, #6B7790);
-  cursor: pointer;
-  transition: all var(--df-transition-fast, 0.15s ease);
-}
-
-.df-search-layout__btn:hover:not(:disabled) {
-  border-color: var(--df-color-primary, #1890ff);
-  color: var(--df-color-primary, #1890ff);
-}
-
-.df-search-layout__btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.df-search-layout__btn--primary {
-  background: var(--df-color-primary, #1890ff);
-  border-color: var(--df-color-primary, #1890ff);
-  color: #fff;
-}
-
-.df-search-layout__btn--primary:hover:not(:disabled) {
-  opacity: 0.85;
-  color: #fff;
 }
 
 .df-search-layout__spinner {

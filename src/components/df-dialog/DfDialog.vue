@@ -22,17 +22,24 @@
       </div>
       <div v-if="$slots.footer || showDefaultFooter" class="df-dialog__footer">
         <slot name="footer">
-          <button class="df-dialog__btn df-dialog__btn--default" @click="onCancel">
-            {{ cancelText }}
-          </button>
-          <button
-            class="df-dialog__btn df-dialog__btn--primary"
+          <DxButton
+            :text="cancelText"
+            styling-mode="outlined"
+            type="normal"
+            @click="onCancel"
+          />
+          <DxButton
+            :text="confirmText"
+            type="default"
+            styling-mode="contained"
             :disabled="confirmLoading"
             @click="onConfirm"
           >
-            <DfLoading v-if="confirmLoading" :loading="true" />
-            {{ confirmText }}
-          </button>
+            <template #content>
+              <DfLoading v-if="confirmLoading" :loading="true" style="display:inline;width:14px;height:14px;background:transparent" />
+              {{ confirmText }}
+            </template>
+          </DxButton>
         </slot>
       </div>
     </template>
@@ -42,6 +49,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { DxPopup } from 'devextreme-vue/popup'
+import { DxButton } from 'devextreme-vue/button'
 import DfLoading from '../df-loading/DfLoading.vue'
 
 import type { DfDialogProps } from './types'
@@ -167,38 +175,4 @@ function trapFocus(e: KeyboardEvent) {
   border-top: 1px solid var(--df-color-border, #e0e0e0);
 }
 
-.df-dialog__btn {
-  padding: 6px 20px;
-  border-radius: var(--df-radius-sm, 4px);
-  font-size: var(--df-font-size-md, 14px);
-  cursor: pointer;
-  border: 1px solid var(--df-color-border, #e0e0e0);
-  transition: all var(--df-transition-fast, 150ms);
-  position: relative;
-}
-
-.df-dialog__btn--default {
-  background: var(--df-color-bg-surface, #fff);
-  color: var(--df-color-text-primary, #333);
-}
-
-.df-dialog__btn--default:hover {
-  border-color: var(--df-color-primary, #1976d2);
-  color: var(--df-color-primary, #1976d2);
-}
-
-.df-dialog__btn--primary {
-  background: var(--df-color-primary, #1976d2);
-  color: var(--df-color-primary-contrast, #fff);
-  border-color: var(--df-color-primary, #1976d2);
-}
-
-.df-dialog__btn--primary:hover {
-  background: var(--df-color-primary-dark, #1565c0);
-}
-
-.df-dialog__btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
 </style>

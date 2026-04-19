@@ -10,8 +10,8 @@
           <img :src="currentPreviewSrc" class="df-image-viewer__img" />
           <span class="df-image-viewer__close">&times;</span>
           <div v-if="previewSrcList.length > 1" class="df-image-viewer__nav" @click.stop>
-            <button @click="prevPreview">&lt;</button>
-            <button @click="nextPreview">&gt;</button>
+            <DxButton icon="chevronprev" styling-mode="text" @click="prevPreview" />
+            <DxButton icon="chevronnext" styling-mode="text" @click="nextPreview" />
           </div>
         </div>
       </transition>
@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
+import { DxButton } from 'devextreme-vue/button'
 
 const props = withDefaults(defineProps<{
   src?: string
@@ -85,7 +86,6 @@ onMounted(loadImage)
 .df-image-viewer__img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
 .df-image-viewer__close { position: absolute; top: 40px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; }
 .df-image-viewer__nav { position: absolute; bottom: 30px; display: flex; gap: 20px; }
-.df-image-viewer__nav button { width: 44px; height: 44px; border-radius: 50%; border: none; background: rgba(255,255,255,.3); color: #fff; font-size: 18px; cursor: pointer; }
 
 .df-fade-enter-active, .df-fade-leave-active { transition: opacity .3s; }
 .df-fade-enter-from, .df-fade-leave-to { opacity: 0; }

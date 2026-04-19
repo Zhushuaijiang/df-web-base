@@ -139,8 +139,8 @@ defineExpose({ dropDownRef })
 .df-cascader__panel { list-style: none; margin: 0; padding: 4px 0; min-width: 160px; max-height: 280px; overflow-y: auto; border-right: 1px solid var(--df-color-border-light, #e4e7ed); }
 .df-cascader__panel:last-child { border-right: none; }
 .df-cascader__node { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; font-size: 14px; cursor: pointer; }
-.df-cascader__node:hover { background: #f5f7fa; }
+.df-cascader__node:hover { background: var(--df-color-bg-secondary, #f5f7fa); }
 .df-cascader__node.is-active { color: var(--df-color-primary, #409eff); font-weight: 700; }
-.df-cascader__node.is-disabled { color: #c0c4cc; cursor: not-allowed; }
-.df-cascader__arrow { font-size: 12px; color: #c0c4cc; }
+.df-cascader__node.is-disabled { color: var(--df-color-text-disabled, #c0c4cc); cursor: not-allowed; }
+.df-cascader__arrow { font-size: 12px; color: var(--df-color-text-disabled, #c0c4cc); }
 </style>

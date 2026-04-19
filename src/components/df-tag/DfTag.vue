@@ -93,9 +93,9 @@ function handleKeyClose(e: KeyboardEvent) {
 
 /* Light effect (default) */
 .df-tag--light { background: var(--df-color-primary-50, #E8F5F3); color: var(--df-color-primary, #2AA890); border-color: var(--df-color-primary-100, #C5E8E3); }
-.df-tag--light.df-tag--success { background: var(--df-color-success-light, #F6FFED); color: var(--df-color-success, #52C41A); border-color: #d9f7be; }
-.df-tag--light.df-tag--warning { background: var(--df-color-warning-light, #FFFBE6); color: var(--df-color-warning, #FAAD14); border-color: #ffe58f; }
-.df-tag--light.df-tag--danger { background: var(--df-color-error-light, #FFF2F0); color: var(--df-color-error, #F5222D); border-color: #ffccc7; }
+.df-tag--light.df-tag--success { background: var(--df-color-success-light, #F6FFED); color: var(--df-color-success, #52C41A); border-color: var(--df-color-success-border, #d9f7be); }
+.df-tag--light.df-tag--warning { background: var(--df-color-warning-light, #FFFBE6); color: var(--df-color-warning, #FAAD14); border-color: var(--df-color-warning-border, #ffe58f); }
+.df-tag--light.df-tag--danger { background: var(--df-color-error-light, #FFF2F0); color: var(--df-color-error, #F5222D); border-color: var(--df-color-error-border, #ffccc7); }
 .df-tag--light.df-tag--info { background: var(--df-color-secondary-50, #F5F6F8); color: var(--df-color-secondary-500, #6B7790); border-color: var(--df-color-secondary-200, #D1D6E0); }
 .df-tag--light.df-tag--primary { background: var(--df-color-primary-50, #E8F5F3); color: var(--df-color-primary, #2AA890); border-color: var(--df-color-primary-100, #C5E8E3); }
 
@@ -111,9 +111,9 @@ function handleKeyClose(e: KeyboardEvent) {
 /* Plain effect */
 .df-tag--plain { background: transparent; }
 .df-tag--plain:not([class*="df-tag--success"]):not([class*="df-tag--warning"]):not([class*="df-tag--danger"]):not([class*="df-tag--info"]):not([class*="df-tag--primary"]) { color: var(--df-color-primary, #2AA890); border-color: var(--df-color-primary-200, #9EDAD1); }
-.df-tag--plain.df-tag--success { color: var(--df-color-success, #52C41A); border-color: #b7eb8f; }
-.df-tag--plain.df-tag--warning { color: var(--df-color-warning, #FAAD14); border-color: #ffd666; }
-.df-tag--plain.df-tag--danger { color: var(--df-color-error, #F5222D); border-color: #ffa39e; }
+.df-tag--plain.df-tag--success { color: var(--df-color-success, #52C41A); border-color: var(--df-color-success, #b7eb8f); }
+.df-tag--plain.df-tag--warning { color: var(--df-color-warning, #FAAD14); border-color: var(--df-color-warning, #ffd666); }
+.df-tag--plain.df-tag--danger { color: var(--df-color-error, #F5222D); border-color: var(--df-color-error, #ffa39e); }
 .df-tag--plain.df-tag--info { color: var(--df-color-secondary-500, #6B7790); border-color: var(--df-color-secondary-200, #D1D6E0); }
 .df-tag--plain.df-tag--primary { color: var(--df-color-primary, #2AA890); border-color: var(--df-color-primary, #2AA890); }
 

@@ -17,24 +17,18 @@
         </div>
         <!-- Prompt input -->
         <div v-if="showInput" class="df-message-box__input">
-          <input
+          <DxTextBox
             ref="inputRef"
-            v-model="inputValue"
-            :type="inputType"
+            v-model:value="inputValue"
             :placeholder="inputPlaceholder"
-            class="df-message-box__input-inner"
-            @keydown.enter="handleAction('confirm')"
+            @enter-key="handleAction('confirm')"
           />
           <p v-if="inputErrorMessage && showInputError" class="df-message-box__errormsg">{{ inputErrorMessage }}</p>
         </div>
         <!-- Footer -->
         <div class="df-message-box__footer">
-          <button v-if="showCancelButton" class="df-message-box__btn df-message-box__btn--cancel" @click="handleAction('cancel')">
-            {{ cancelButtonText }}
-          </button>
-          <button v-if="showConfirmButton" class="df-message-box__btn df-message-box__btn--confirm" @click="handleAction('confirm')">
-            {{ confirmButtonText }}
-          </button>
+          <DxButton v-if="showCancelButton" :text="cancelButtonText" styling-mode="outlined" type="normal" @click="handleAction('cancel')" />
+          <DxButton v-if="showConfirmButton" :text="confirmButtonText" type="default" styling-mode="contained" @click="handleAction('confirm')" />
         </div>
       </div>
     </div>
@@ -43,6 +37,8 @@
 
 <script setup lang="ts">
 import { ref, nextTick, onMounted, computed } from 'vue'
+import { DxButton } from 'devextreme-vue/button'
+import { DxTextBox } from 'devextreme-vue/text-box'
 
 export type MessageBoxAction = 'confirm' | 'cancel' | 'close'
 export type MessageBoxType = 'alert' | 'confirm' | 'prompt'
@@ -97,7 +93,7 @@ const props = withDefaults(defineProps<DfMessageBoxProps>(), {
 defineOptions({ name: 'DfMessageBox' })
 
 const visible = ref(false)
-const inputRef = ref<HTMLInputElement>()
+const inputRef = ref<InstanceType<typeof DxTextBox>>()
 const inputValue = ref(props.inputValue)
 const showInputError = ref(false)
 
@@ -131,7 +127,7 @@ function handleAction(action: MessageBoxAction) {
 onMounted(() => {
   visible.value = true
   if (props.showInput) {
-    nextTick(() => inputRef.value?.focus())
+    nextTick(() => inputRef.value?.instance?.focus())
   }
 })
 
@@ -150,13 +146,8 @@ defineExpose({ visible, inputValue })
 .df-message-box__message { font-size: 14px; color: var(--df-color-text-primary, #606266); line-height: 1.5; }
 .df-message-box__message p { margin: 0; }
 .df-message-box__input { padding: 4px 20px 16px; }
-.df-message-box__input-inner { width: 100%; padding: 8px 12px; border: 1px solid var(--df-color-border, #dcdfe6); border-radius: var(--df-radius-sm, 4px); font-size: var(--df-font-size-md, 14px); box-sizing: border-box; }
-.df-message-box__input-inner:focus { border-color: var(--df-color-primary, #409eff); outline: none; }
 .df-message-box__errormsg { color: var(--df-color-error, #f56c6c); font-size: var(--df-font-size-xs, 12px); margin: 4px 0 0; }
 .df-message-box__footer { display: flex; justify-content: flex-end; gap: 10px; padding: 8px 20px 16px; }
-.df-message-box__btn { padding: 8px 20px; border-radius: var(--df-radius-sm, 4px); font-size: var(--df-font-size-md, 14px); cursor: pointer; border: 1px solid var(--df-color-border, #dcdfe6); background: var(--df-color-bg-surface, #fff); color: var(--df-color-text-primary, #606266); }
-.df-message-box__btn:hover { opacity: .85; }
-.df-message-box__btn--confirm { background: var(--df-color-primary, #409eff); color: #fff; border-color: var(--df-color-primary, #409eff); }
 .df-message-box--center .df-message-box__body { justify-content: center; }
 .df-message-box--center .df-message-box__footer { justify-content: center; }
 

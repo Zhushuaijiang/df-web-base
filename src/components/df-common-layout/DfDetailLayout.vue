@@ -3,9 +3,13 @@
     <!-- Header -->
     <div class="df-detail-layout__header">
       <div class="df-detail-layout__header-left">
-        <button v-if="showBackButton" class="df-detail-layout__back" @click="emit('back')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
+        <DxButton
+          v-if="showBackButton"
+          class="df-detail-layout__back"
+          icon="back"
+          styling-mode="text"
+          @click="emit('back')"
+        />
         <slot name="header">
           <h2 class="df-detail-layout__title">{{ title }}</h2>
           <span v-if="subtitle" class="df-detail-layout__subtitle">{{ subtitle }}</span>
@@ -86,6 +90,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
+import { DxButton } from 'devextreme-vue/button'
 import DfButton from '../df-button/DfButton.vue'
 import DfSplitPane from '../df-split-pane/DfSplitPane.vue'
 import type { DfDetailLayoutProps } from './types'
@@ -243,25 +248,9 @@ defineExpose({
   flex: 1;
 }
 
-/* 返回按钮：纯图标，无文字无边框，hover 出底色 */
+/* 返回按钮 */
 .df-detail-layout__back {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: var(--df-radius-sm, 4px);
-  background: transparent;
-  color: var(--df-color-text-secondary, #6B7790);
-  cursor: pointer;
   flex-shrink: 0;
-  transition: all var(--df-transition-fast, 0.15s ease);
-}
-
-.df-detail-layout__back:hover {
-  color: var(--df-color-primary, #2AA890);
-  background: var(--df-color-primary-50, #E8F5F3);
 }
 
 .df-detail-layout__title {

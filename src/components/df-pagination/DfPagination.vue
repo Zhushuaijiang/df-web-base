@@ -3,18 +3,32 @@
     <!-- 左侧组 -->
     <template v-for="part in leftLayout" :key="part">
       <span v-if="part === 'total'" class="df-pagination__total">共 {{ total }} 条</span>
-      <select v-if="part === 'sizes'" class="df-pagination__sizes" :value="internalPageSize" @change="onSizeChange">
-        <option v-for="s in pageSizes" :key="s" :value="s">{{ s }} 条/页</option>
-      </select>
-      <button v-if="part === 'prev'" class="df-pagination__btn" :disabled="internalCurrentPage <= 1" @click="prev">&lsaquo;</button>
+      <DxSelectBox
+        v-if="part === 'sizes'"
+        :items="pageSizeItems"
+        :value="internalPageSize"
+        value-expr="value"
+        display-expr="label"
+        :width="120"
+        @value-changed="(e: any) => onSizeChange(e.value)"
+      />
+      <DxButton v-if="part === 'prev'" icon="chevronleft" :disabled="internalCurrentPage <= 1" @click="prev" />
       <ul v-if="part === 'pager'" class="df-pagination__pager">
         <li v-for="p in pagers" :key="p" :class="{ active: p === internalCurrentPage, 'df-pagination__ellipsis': p < 0 }" @click="p > 0 && goTo(p)">
           {{ p > 0 ? p : '...' }}
         </li>
       </ul>
-      <button v-if="part === 'next'" class="df-pagination__btn" :disabled="internalCurrentPage >= totalPages" @click="next">&rsaquo;</button>
+      <DxButton v-if="part === 'next'" icon="chevronright" :disabled="internalCurrentPage >= totalPages" @click="next" />
       <span v-if="part === 'jumper'" class="df-pagination__jump">
-        前往 <input :value="internalCurrentPage" type="number" min="1" :max="totalPages" @change="onJump" /> 页
+        前往
+        <DxNumberBox
+          :value="internalCurrentPage"
+          :min="1"
+          :max="totalPages"
+          :width="60"
+          @value-changed="(e: any) => onJump(e.value)"
+        />
+        页
       </span>
     </template>
     <!-- 弹性间距 -->
@@ -22,18 +36,32 @@
     <!-- 右侧组 -->
     <template v-for="part in rightLayout" :key="part">
       <span v-if="part === 'total'" class="df-pagination__total">共 {{ total }} 条</span>
-      <select v-if="part === 'sizes'" class="df-pagination__sizes" :value="internalPageSize" @change="onSizeChange">
-        <option v-for="s in pageSizes" :key="s" :value="s">{{ s }} 条/页</option>
-      </select>
-      <button v-if="part === 'prev'" class="df-pagination__btn" :disabled="internalCurrentPage <= 1" @click="prev">&lsaquo;</button>
+      <DxSelectBox
+        v-if="part === 'sizes'"
+        :items="pageSizeItems"
+        :value="internalPageSize"
+        value-expr="value"
+        display-expr="label"
+        :width="120"
+        @value-changed="(e: any) => onSizeChange(e.value)"
+      />
+      <DxButton v-if="part === 'prev'" icon="chevronleft" :disabled="internalCurrentPage <= 1" @click="prev" />
       <ul v-if="part === 'pager'" class="df-pagination__pager">
         <li v-for="p in pagers" :key="p" :class="{ active: p === internalCurrentPage, 'df-pagination__ellipsis': p < 0 }" @click="p > 0 && goTo(p)">
           {{ p > 0 ? p : '...' }}
         </li>
       </ul>
-      <button v-if="part === 'next'" class="df-pagination__btn" :disabled="internalCurrentPage >= totalPages" @click="next">&rsaquo;</button>
+      <DxButton v-if="part === 'next'" icon="chevronright" :disabled="internalCurrentPage >= totalPages" @click="next" />
       <span v-if="part === 'jumper'" class="df-pagination__jump">
-        前往 <input :value="internalCurrentPage" type="number" min="1" :max="totalPages" @change="onJump" /> 页
+        前往
+        <DxNumberBox
+          :value="internalCurrentPage"
+          :min="1"
+          :max="totalPages"
+          :width="60"
+          @value-changed="(e: any) => onJump(e.value)"
+        />
+        页
       </span>
     </template>
   </div>
@@ -41,6 +69,9 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
+import { DxButton } from 'devextreme-vue/button'
+import { DxSelectBox } from 'devextreme-vue/select-box'
+import { DxNumberBox } from 'devextreme-vue/number-box'
 import type { DfPaginationProps } from './types'
 
 const props = withDefaults(defineProps<DfPaginationProps>(), {
@@ -80,6 +111,8 @@ const hasSpacer = computed(() => spacerIndex.value > -1)
 const leftLayout = computed(() => hasSpacer.value ? layoutParts.value.slice(0, spacerIndex.value) : layoutParts.value)
 const rightLayout = computed(() => hasSpacer.value ? layoutParts.value.slice(spacerIndex.value + 1) : [])
 
+const pageSizeItems = computed(() => props.pageSizes.map(s => ({ value: s, label: `${s} 条/页` })))
+
 const pagers = computed(() => {
   const count = props.pagerCount
   const current = internalCurrentPage.value
@@ -108,16 +141,14 @@ function goTo(p: number) {
 function prev() { goTo(internalCurrentPage.value - 1); emit('prev-click', internalCurrentPage.value) }
 function next() { goTo(internalCurrentPage.value + 1); emit('next-click', internalCurrentPage.value) }
 
-function onSizeChange(e: Event) {
-  const val = Number((e.target as HTMLSelectElement).value)
+function onSizeChange(val: number) {
   internalPageSize.value = val
   emit('update:pageSize', val)
   emit('size-change', val)
   goTo(1)
 }
 
-function onJump(e: Event) {
-  const val = parseInt((e.target as HTMLInputElement).value)
+function onJump(val: number) {
   if (!isNaN(val)) goTo(val)
 }
 </script>
@@ -154,63 +185,6 @@ function onJump(e: Event) {
   white-space: nowrap;
   line-height: 28px;
   box-sizing: border-box;
-}
-
-/* ─── 每页条数选择器 ─── */
-.df-pagination__sizes {
-  appearance: none;
-  -webkit-appearance: none;
-  border: 1px solid var(--df-color-border, #d9d9d9);
-  border-radius: var(--df-radius-base, 4px);
-  padding: 0 20px 0 6px;
-  height: 28px;
-  font-size: var(--df-font-size, 14px);
-  font-family: inherit;
-  background: var(--df-color-white, #fff) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M3 4.5L6 7.5 9 4.5'/%3E%3C/svg%3E") no-repeat right 4px center;
-  color: var(--df-color-text-primary, #303133);
-  cursor: pointer;
-  outline: none;
-  box-sizing: border-box;
-  line-height: 26px;
-}
-
-.df-pagination__sizes:focus {
-  border-color: var(--df-color-primary, #1890ff);
-}
-
-/* ─── 翻页按钮 ─── */
-.df-pagination__btn {
-  appearance: none;
-  -webkit-appearance: none;
-  border: 1px solid var(--df-color-border, #d9d9d9);
-  border-radius: var(--df-radius-base, 4px);
-  background: var(--df-color-white, #fff);
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: inherit;
-  line-height: 1;
-  color: var(--df-color-text-primary, #303133);
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  transition: all 150ms;
-}
-
-.df-pagination__btn:disabled {
-  color: #ccc;
-  cursor: not-allowed;
-  border-color: #eee;
-  background: #fafafa;
-}
-
-.df-pagination__btn:not(:disabled):hover {
-  color: var(--df-color-primary, #1890ff);
-  border-color: var(--df-color-primary, #1890ff);
 }
 
 /* ─── 页码列表 ─── */
@@ -256,12 +230,12 @@ function onJump(e: Event) {
 }
 
 .df-pagination--bg .df-pagination__pager li {
-  background: #f1f2f2;
-  border: 1px solid #e3e3e3;
+  background: var(--df-color-bg-secondary, #f1f2f2);
+  border: 1px solid var(--df-color-border-light, #e3e3e3);
 }
 
 .df-pagination--bg .df-pagination__pager li:hover {
-  background: #e3e3e3;
+  background: var(--df-color-border-light, #e3e3e3);
 }
 
 .df-pagination--bg .df-pagination__pager li.active {
@@ -282,44 +256,10 @@ function onJump(e: Event) {
   box-sizing: border-box;
 }
 
-.df-pagination__jump input {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 42px;
-  height: 28px;
-  border: 1px solid var(--df-color-border, #d9d9d9);
-  border-radius: var(--df-radius-base, 4px);
-  padding: 0 4px;
-  text-align: center;
-  font-size: var(--df-font-size, 14px);
-  font-family: inherit;
-  color: var(--df-color-text-primary, #303133);
-  outline: none;
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.df-pagination__jump input:focus {
-  border-color: var(--df-color-primary, #1890ff);
-}
-
 /* ─── 小尺寸覆盖 ─── */
 .df-pagination--small .df-pagination__total {
   font-size: 12px;
   line-height: 24px;
-}
-
-.df-pagination--small .df-pagination__sizes {
-  height: 24px;
-  font-size: 12px;
-  padding: 1px 4px;
-  line-height: 18px;
-}
-
-.df-pagination--small .df-pagination__btn {
-  width: 24px;
-  height: 24px;
-  font-size: 11px;
 }
 
 .df-pagination--small .df-pagination__pager li {
@@ -335,12 +275,5 @@ function onJump(e: Event) {
 .df-pagination--small .df-pagination__jump {
   font-size: 12px;
   line-height: 24px;
-}
-
-.df-pagination--small .df-pagination__jump input {
-  width: 36px;
-  height: 24px;
-  font-size: 12px;
-  padding: 0 2px;
 }
 </style>

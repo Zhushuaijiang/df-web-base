@@ -32,15 +32,13 @@
       <!-- Header -->
       <header class="df-app-shell__header">
         <div class="df-app-shell__header-left">
-          <button
+          <DxButton
             class="df-app-shell__toggle-btn"
+            icon="menu"
+            styling-mode="text"
             :aria-label="isSidebarCollapsed ? '展开菜单' : '收起菜单'"
             @click="toggleSidebar"
-          >
-            <span class="df-app-shell__toggle-icon" :class="{ 'df-app-shell__toggle-icon--collapsed': isSidebarCollapsed }">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            </span>
-          </button>
+          />
           <slot name="headerLeft" />
         </div>
         <div class="df-app-shell__header-right">
@@ -68,6 +66,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { DxButton } from 'devextreme-vue/button'
 
 /**
  * DfAppShell — 应用外壳布局
@@ -270,38 +269,6 @@ defineExpose({
   display: flex;
   align-items: center;
   gap: var(--df-spacing-3, 12px);
-}
-
-.df-app-shell__toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: var(--df-radius-sm, 4px);
-  background: rgba(255, 255, 255, 0.15);
-  color: inherit;
-  cursor: pointer;
-  transition: background var(--df-transition-fast, 0.15s ease);
-}
-
-.df-app-shell__toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.df-app-shell__toggle-btn:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 2px;
-}
-
-.df-app-shell__toggle-icon {
-  display: inline-flex;
-  transition: transform var(--df-transition-normal, 0.25s ease);
-}
-
-.df-app-shell__toggle-icon--collapsed {
-  transform: rotate(90deg);
 }
 
 /* ─── Breadcrumb ─── */

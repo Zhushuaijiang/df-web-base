@@ -4,13 +4,14 @@
     <div class="df-error-boundary">
       <div class="df-error-boundary__icon">⚠</div>
       <p class="df-error-boundary__message">{{ displayMessage }}</p>
-      <button class="df-error-boundary__retry" @click="retry">重试</button>
+      <DxButton text="重试" type="normal" styling-mode="outlined" @click="retry" />
     </div>
   </slot>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onErrorCaptured } from 'vue'
+import { DxButton } from 'devextreme-vue/button'
 
 const props = withDefaults(defineProps<{
   /** 自定义错误提示文案，未设置时显示默认带 info 的提示 */
@@ -81,19 +82,4 @@ defineExpose({ hasError, retry })
   color: var(--df-color-text-secondary, #666);
 }
 
-.df-error-boundary__retry {
-  padding: 6px 16px;
-  border: 1px solid var(--df-color-primary, #1976d2);
-  border-radius: var(--df-radius-sm, 4px);
-  background: transparent;
-  color: var(--df-color-primary, #1976d2);
-  cursor: pointer;
-  font-size: var(--df-font-size-md, 14px);
-  box-sizing: border-box;
-}
-
-.df-error-boundary__retry:hover {
-  background: var(--df-color-primary, #1976d2);
-  color: #fff;
-}
 </style>

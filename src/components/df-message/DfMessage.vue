@@ -101,10 +101,10 @@ defineExpose({ close, visible })
 }
 
 .df-message--center { justify-content: center; }
-.df-message--success { background: var(--df-color-success-light, #F6FFED); border: 1px solid #d9f7be; color: var(--df-color-success, #52C41A); }
-.df-message--warning { background: var(--df-color-warning-light, #FFFBE6); border: 1px solid #ffe58f; color: var(--df-color-warning, #FAAD14); }
-.df-message--info { background: var(--df-color-info-light, #E6F7FF); border: 1px solid #91d5ff; color: var(--df-color-info, #1890FF); }
-.df-message--error { background: var(--df-color-error-light, #FFF2F0); border: 1px solid #ffccc7; color: var(--df-color-error, #F5222D); }
+.df-message--success { background: var(--df-color-success-light, #F6FFED); border: 1px solid var(--df-color-success-border, #d9f7be); color: var(--df-color-success, #52C41A); }
+.df-message--warning { background: var(--df-color-warning-light, #FFFBE6); border: 1px solid var(--df-color-warning-border, #ffe58f); color: var(--df-color-warning, #FAAD14); }
+.df-message--info { background: var(--df-color-info-light, #E6F7FF); border: 1px solid var(--df-color-info-border, #91d5ff); color: var(--df-color-info, #1890FF); }
+.df-message--error { background: var(--df-color-error-light, #FFF2F0); border: 1px solid var(--df-color-error-border, #ffccc7); color: var(--df-color-error, #F5222D); }
 
 .df-message__icon { font-size: 16px; }
 .df-message__content { flex: 1; font-size: 14px; line-height: 1.4; }
