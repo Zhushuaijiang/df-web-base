@@ -469,6 +469,8 @@ interface OperationColumnConfig {
 .table-demo-actions {
   display: flex;
   align-items: center;
+  justify-content: center;
+  height: 100%;
   gap: 12px;
 }
 
