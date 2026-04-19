@@ -3,22 +3,19 @@
     <!-- Visible buttons -->
     <template v-for="(btn, idx) in visibleButtons" :key="idx">
       <slot name="button" :item="btn" :index="idx">
-        <button
-          class="df-button-list__btn"
-          :class="[`df-button-list__btn--${btn.type ?? 'default'}`, { 'is-disabled': btn.disabled }]"
+        <DxButton
+          :text="btn.label"
+          :icon="btn.icon"
+          :type="toDxType(btn.type)"
+          :styling-mode="toDxStylingMode(btn.type)"
           :disabled="btn.disabled"
           @click="handleClick(btn)"
-        >
-          <i v-if="btn.icon" :class="btn.icon" />
-          {{ btn.label }}
-        </button>
+        />
       </slot>
     </template>
     <!-- More dropdown -->
     <div v-if="overflowButtons.length" class="df-button-list__more" @click="toggleMore" @mouseleave="showMore = false">
-      <button class="df-button-list__btn df-button-list__btn--default">
-        {{ moreText }} <i class="dx-icon-chevrondown" />
-      </button>
+      <DxButton :text="moreText" icon="chevrondown" @click="toggleMore" />
       <transition name="df-dropdown-fade">
         <ul v-show="showMore" class="df-button-list__dropdown">
           <li
@@ -39,6 +36,8 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
+import { DxButton } from 'devextreme-vue/button'
+import type { ButtonStyle } from 'devextreme/ui/button'
 
 export interface ButtonItem {
   label: string
@@ -69,6 +68,26 @@ const emit = defineEmits<{
 }>()
 
 defineOptions({ name: 'DfButtonList' })
+
+/** 映射按钮类型到 DxButton type */
+function toDxType(type?: string): string {
+  const map: Record<string, string> = {
+    default: 'normal',
+    primary: 'default',
+    success: 'success',
+    warning: 'normal',
+    danger: 'danger',
+    text: 'normal',
+  }
+  return map[type ?? 'default'] ?? 'normal'
+}
+
+/** 映射按钮类型到 DxButton stylingMode */
+function toDxStylingMode(type?: string): ButtonStyle | undefined {
+  if (type === 'text') return 'text'
+  if (type === 'primary' || type === 'success' || type === 'danger') return 'contained'
+  return 'outlined'
+}
 
 const containerRef = ref<HTMLElement>()
 const showMore = ref(false)
@@ -125,26 +144,6 @@ watch(() => props.maxVisible, v => {
 
 <style scoped>
 .df-button-list { display: inline-flex; align-items: center; gap: 8px; position: relative; }
-
-.df-button-list__btn {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 6px 14px; border-radius: var(--df-radius-sm, 4px); font-size: var(--df-font-size-md, 14px);
-  border: 1px solid var(--df-color-border, #dcdfe6); background: var(--df-color-bg-surface, #fff); color: var(--df-color-text-secondary, #606266);
-  cursor: pointer; white-space: nowrap; transition: all .2s;
-}
-.df-button-list__btn:hover { color: var(--df-color-primary, #409eff); border-color: var(--df-color-primary, #409eff); }
-.df-button-list__btn.is-disabled { color: var(--df-color-text-disabled, #c0c4cc); cursor: not-allowed; }
-
-.df-button-list__btn--primary { background: var(--df-color-primary, #409eff); color: #fff; border-color: var(--df-color-primary, #409eff); }
-.df-button-list__btn--primary:hover { opacity: .85; }
-.df-button-list__btn--success { background: var(--df-color-success, #52C41A); color: #fff; border-color: var(--df-color-success, #52C41A); }
-.df-button-list__btn--danger { background: var(--df-color-error, #F5222D); color: #fff; border-color: var(--df-color-error, #F5222D); }
-.df-button-list__btn--warning { background: var(--df-color-warning, #FAAD14); color: #fff; border-color: var(--df-color-warning, #FAAD14); }
-.df-button-list__btn--text { border: none; background: transparent; color: var(--df-color-primary, #409eff); padding: 6px 8px; }
-.df-button-list__btn--text:hover { opacity: .7; }
-
-.df-button-list--small .df-button-list__btn { padding: 4px 10px; font-size: 12px; }
-.df-button-list--large .df-button-list__btn { padding: 8px 18px; font-size: 14px; }
 
 .df-button-list__more { position: relative; }
 .df-button-list__dropdown {
