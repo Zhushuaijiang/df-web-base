@@ -13,4 +13,3 @@ coverage/
 Thumbs.db
 coverage-output*.txt
 docs/.vitepress/cache/
-package-lock.json
