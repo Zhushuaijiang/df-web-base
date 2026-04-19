@@ -1,6 +1,10 @@
 /**
  * df-web-base 样式入口
  * 子应用引入: import 'df-web-base/styles/index.css'
+ *
+ * 注意：DevExtreme 主题 CSS 需要消费方自行导入：
+ *   import 'devextreme/dist/css/dx.common.css'
+ *   import 'devextreme/dist/css/dx.light.css'  // 或其他主题
  */
 @import './variables.css';
 @import './base.css';

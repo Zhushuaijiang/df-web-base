@@ -105,8 +105,4 @@ function onRangeChanged(e: any) {
 <style scoped>
 .df-date-picker { display: inline-flex; }
 .df-date-picker--disabled { opacity: 0.6; pointer-events: none; }
-.df-date-picker--small :deep(.dx-texteditor-input) { height: 28px; font-size: 12px; }
-.df-date-picker--small :deep(.dx-texteditor-container) { height: 28px; }
-.df-date-picker--large :deep(.dx-texteditor-input) { height: 40px; font-size: 16px; }
-.df-date-picker--large :deep(.dx-texteditor-container) { height: 40px; }
 </style>

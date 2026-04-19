@@ -105,10 +105,6 @@ defineExpose({ getInstance })
 </script>
 
 <style scoped>
-.df-lookup :deep(.dx-lookup) {
-  border: 1px solid var(--df-color-border, #d9d9d9);
-  border-radius: var(--df-radius-base, 4px);
-}
 .df-lookup--disabled {
   opacity: 0.6;
   pointer-events: none;

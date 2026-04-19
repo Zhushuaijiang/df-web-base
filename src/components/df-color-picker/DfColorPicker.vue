@@ -101,27 +101,9 @@ function onValueChanged(e: any) {
   cursor: not-allowed;
 }
 
-.df-color-picker--small :deep(.dx-colorbox) {
-  height: 28px;
-}
-
-.df-color-picker--small :deep(.dx-texteditor-input) {
-  height: 28px;
-  font-size: 12px;
-}
-
 .df-color-picker--small .df-color-picker__preview {
   width: 20px;
   height: 20px;
-}
-
-.df-color-picker--large :deep(.dx-colorbox) {
-  height: 40px;
-}
-
-.df-color-picker--large :deep(.dx-texteditor-input) {
-  height: 40px;
-  font-size: 16px;
 }
 
 .df-color-picker--large .df-color-picker__preview {

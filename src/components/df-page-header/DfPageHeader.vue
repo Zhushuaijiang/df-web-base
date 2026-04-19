@@ -80,10 +80,6 @@ function onBack() {
   color: var(--df-color-primary, #1890ff);
 }
 
-.df-page-header__back .dx-icon-back {
-  font-size: 16px;
-}
-
 .df-page-header__content {
   display: flex;
   align-items: flex-start;

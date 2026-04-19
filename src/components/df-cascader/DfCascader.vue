@@ -135,10 +135,6 @@ defineExpose({ dropDownRef })
 <style scoped>
 .df-cascader { display: inline-flex; }
 .df-cascader--disabled { opacity: 0.6; pointer-events: none; }
-.df-cascader--small :deep(.dx-texteditor-input) { height: 28px; font-size: 12px; }
-.df-cascader--small :deep(.dx-texteditor-container) { height: 28px; }
-.df-cascader--large :deep(.dx-texteditor-input) { height: 40px; font-size: 16px; }
-.df-cascader--large :deep(.dx-texteditor-container) { height: 40px; }
 .df-cascader__panels { display: flex; max-height: 280px; }
 .df-cascader__panel { list-style: none; margin: 0; padding: 4px 0; min-width: 160px; max-height: 280px; overflow-y: auto; border-right: 1px solid var(--df-color-border-light, #e4e7ed); }
 .df-cascader__panel:last-child { border-right: none; }

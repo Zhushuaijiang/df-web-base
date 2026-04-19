@@ -40,14 +40,4 @@ const visibleFields = computed(() =>
 .df-form {
   width: 100%;
 }
-
-/* UI规范：表单间距 12px，标签右对齐 */
-.df-form :deep(.dx-form-item) {
-  padding-right: var(--df-form-gutter, 12px);
-  padding-bottom: var(--df-form-gutter, 12px);
-}
-
-.df-form :deep(.dx-field-item-label) {
-  text-align: right;
-}
 </style>

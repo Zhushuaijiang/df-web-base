@@ -120,23 +120,4 @@ function onValueChanged(e: any) {
   opacity: 0.6;
   cursor: not-allowed;
 }
-
-.df-slider :deep(.dx-slider-handle) {
-  background: var(--df-color-primary, #1890ff);
-  border-color: var(--df-color-primary, #1890ff);
-}
-
-.df-slider :deep(.dx-slider-range.dx-slider-range-visible) {
-  background: var(--df-color-primary, #1890ff);
-}
-
-.df-slider--small :deep(.dx-slider-handle) {
-  width: 14px;
-  height: 14px;
-}
-
-.df-slider--large :deep(.dx-slider-handle) {
-  width: 22px;
-  height: 22px;
-}
 </style>

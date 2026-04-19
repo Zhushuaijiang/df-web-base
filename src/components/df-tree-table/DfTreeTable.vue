@@ -209,26 +209,4 @@ defineExpose({
 .df-tree-table {
   width: 100%;
 }
-
-.df-tree-table :deep(.dx-treelist) {
-  border-radius: 4px;
-}
-
-.df-tree-table :deep(.dx-treelist-headers) {
-  background-color: var(--df-color-bg-page, #fafafa);
-  color: var(--df-color-text-primary, #303133);
-  font-weight: 500;
-}
-
-.df-tree-table :deep(.dx-treelist-rowsview .dx-row:hover) {
-  background-color: var(--df-fill-color-light, #f5f7fa);
-}
-
-.df-tree-table :deep(.dx-treelist-rowsview .dx-selection) {
-  background-color: var(--df-color-primary-light-9, #ecf5ff);
-}
-
-.df-tree-table :deep(.dx-treelist-nodata) {
-  color: var(--df-color-text-secondary, #909399);
-}
 </style>

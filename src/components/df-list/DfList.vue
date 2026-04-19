@@ -109,8 +109,4 @@ defineExpose({ getInstance })
   display: block;
 }
 
-.df-list :deep(.dx-list) {
-  border: 1px solid var(--df-color-border-light, #e4e7ed);
-  border-radius: 4px;
-}
 </style>

@@ -68,33 +68,4 @@ function onValueChanged(e: any) {
 .df-calendar {
   display: inline-block;
 }
-
-.df-calendar :deep(.dx-calendar) {
-  border: 1px solid var(--df-color-border-light, #e4e7ed);
-  border-radius: 4px;
-}
-
-.df-calendar :deep(.dx-calendar-cell.dx-calendar-selected-date) {
-  background-color: var(--df-color-primary, #1890ff);
-  color: #fff;
-  border-radius: 50%;
-}
-
-.df-calendar :deep(.dx-calendar-cell.dx-calendar-today) {
-  font-weight: 600;
-  color: var(--df-color-primary, #1890ff);
-}
-
-.df-calendar :deep(.dx-calendar-navigator) {
-  font-weight: 500;
-  color: var(--df-color-text-primary, #303133);
-}
-
-.df-calendar--small :deep(.dx-calendar) {
-  font-size: 12px;
-}
-
-.df-calendar--large :deep(.dx-calendar) {
-  font-size: 16px;
-}
 </style>

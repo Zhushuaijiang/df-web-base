@@ -86,7 +86,6 @@ async function onHidden() {
 </script>
 
 <style>
-.df-drawer .dx-popup-content { display: flex; flex-direction: column; padding: 0 !important; }
 .df-drawer__body { flex: 1; overflow: auto; padding: 20px; }
 .df-drawer__footer { padding: 12px 20px; border-top: 1px solid var(--df-color-border, #e4e7ed); display: flex; justify-content: flex-end; gap: 8px; }
 </style>

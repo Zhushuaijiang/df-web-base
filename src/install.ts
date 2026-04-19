@@ -3,9 +3,6 @@ import type { DfUIOptions } from './types/plugin'
 import { registerGlobalComponents } from './components'
 import { registerDirectives } from './directives'
 
-// 自动注入设计令牌样式
-import './styles/index.css'
-
 export const DF_UI_KEY: InjectionKey<DfUIOptions> = Symbol('df-ui')
 
 /**

@@ -6,6 +6,38 @@
 npm install df-web-base
 ```
 
+## 导入主题
+
+df-web-base 不内置任何 DevExtreme 主题 CSS，消费方需自行导入：
+
+```typescript
+// 1. DevExtreme 基础结构（必需）
+import 'devextreme/dist/css/dx.common.css'
+
+// 2. 选择一个主题（任选其一）：
+import 'devextreme/dist/css/dx.light.css'                    // Generic Light（默认）
+// import 'devextreme/dist/css/dx.material.blue.light.css'  // Material Blue Light
+// import 'devextreme/dist/css/dx.material.purple.light.css'// Material Purple Light
+// import 'devextreme/dist/css/dx.material.teal.light.css'  // Material Teal Light
+// import 'devextreme/dist/css/dx.fluent.blue.light.css'    // Fluent Blue Light
+// import 'devextreme/dist/css/dx.dark.css'                  // Generic Dark
+```
+
+### 可用主题
+
+| 主题系列 | 浅色 | 深色 |
+|---------|------|------|
+| Generic | `dx.light` | `dx.dark` |
+| Material Blue | `dx.material.blue.light` | `dx.material.blue.dark` |
+| Material Purple | `dx.material.purple.light` | `dx.material.purple.dark` |
+| Material Teal | `dx.material.teal.light` | `dx.material.teal.dark` |
+| Material Lime | `dx.material.lime.light` | `dx.material.lime.dark` |
+| Material Saffron | `dx.material.saffron.light` | `dx.material.saffron.dark` |
+| Fluent Blue | `dx.fluent.blue.light` | `dx.fluent.blue.dark` |
+| Generic Contrast | `dx.contrast` | — |
+
+也可以使用 [DevExtreme ThemeBuilder](https://devexpress.github.io/ThemeBuilder/) 生成自定义主题。
+
 ## 全量注册
 
 在主应用入口中全量注册所有组件：
@@ -13,7 +45,7 @@ npm install df-web-base
 ```typescript
 import { createApp } from 'vue'
 import { install as installDfUI } from 'df-web-base'
-import 'df-web-base/dist/assets/style.css'
+import 'df-web-base/styles/index.css'
 
 const app = createApp(App)
 

@@ -243,33 +243,6 @@ function togglePasswordVisible() {
   border-radius: 0 var(--df-radius-sm, 4px) var(--df-radius-sm, 4px) 0;
 }
 
-.df-input--mini .df-input__inner :deep(.dx-texteditor-input) {
-  font-size: var(--df-font-size-xs, 12px);
-  height: 24px;
-}
-
-.df-input--mini .df-input__inner :deep(.dx-texteditor-container) {
-  height: 24px;
-}
-
-.df-input--small .df-input__inner :deep(.dx-texteditor-input) {
-  font-size: var(--df-font-size-sm, 13px);
-  height: 28px;
-}
-
-.df-input--small .df-input__inner :deep(.dx-texteditor-container) {
-  height: 28px;
-}
-
-.df-input--large .df-input__inner :deep(.dx-texteditor-input) {
-  font-size: var(--df-font-size-lg, 16px);
-  height: 40px;
-}
-
-.df-input--large .df-input__inner :deep(.dx-texteditor-container) {
-  height: 40px;
-}
-
 .df-input--disabled {
   opacity: 0.6;
   cursor: not-allowed;

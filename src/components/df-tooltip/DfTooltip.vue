@@ -88,28 +88,3 @@ onBeforeUnmount(clearTimers)
 }
 </style>
 
-<style>
-/* 全局样式 — tooltip 渲染在 body 下 */
-.df-tooltip--dark .dx-tooltip-content {
-  background: var(--df-color-secondary-800, rgba(48, 48, 48, 0.95));
-  color: #fff;
-  border-radius: var(--df-radius-sm, 4px);
-  padding: var(--df-spacing-1, 6px) var(--df-spacing-2, 10px);
-  font-size: var(--df-font-size-sm, 13px);
-  line-height: 1.4;
-  max-width: 300px;
-  word-break: break-word;
-}
-
-.df-tooltip--light .dx-tooltip-content {
-  background: var(--df-color-bg-surface, #fff);
-  color: var(--df-color-text-primary, #1A1A1A);
-  border: 1px solid var(--df-color-border, #E8EBF0);
-  border-radius: var(--df-radius-sm, 4px);
-  padding: var(--df-spacing-1, 6px) var(--df-spacing-2, 10px);
-  font-size: var(--df-font-size-sm, 13px);
-  line-height: 1.4;
-  max-width: 300px;
-  box-shadow: var(--df-shadow-md, 0 2px 8px rgba(0, 0, 0, 0.12));
-}
-</style>

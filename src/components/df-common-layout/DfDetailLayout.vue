@@ -294,31 +294,6 @@ defineExpose({
   min-width: 64px;
 }
 
-.df-detail-layout__action-btn :deep(.dx-button) {
-  height: var(--d-btn-h);
-  min-height: var(--d-btn-h);
-  box-sizing: border-box;
-  border-radius: var(--df-radius-sm, 4px);
-}
-
-.df-detail-layout__action-btn :deep(.dx-button-content) {
-  height: var(--d-btn-h);
-  min-height: var(--d-btn-h);
-  padding: 0 var(--d-btn-px);
-  border-radius: var(--df-radius-sm, 4px);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.df-detail-layout__action-btn :deep(.df-button__content) {
-  min-height: 100%;
-  line-height: 1;
-}
-
 /* ─── Tab Bar ─── */
 .df-detail-layout__tab-bar {
   flex-shrink: 0;

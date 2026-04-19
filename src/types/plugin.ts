@@ -99,6 +99,8 @@ export interface DfDevExtremeConfig {
   defaultCurrency?: string
   editorStylingMode?: 'outlined' | 'underlined' | 'filled'
   floatingActionButtonConfig?: { position?: string }
+  /** 主题名称（仅文档说明，实际 CSS 由消费方导入） */
+  theme?: string
 }
 
 /** 字典项，格式兼容 DevExtreme lookup.dataSource */

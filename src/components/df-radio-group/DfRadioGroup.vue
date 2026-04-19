@@ -82,13 +82,4 @@ defineExpose({ getInstance })
 </script>
 
 <style scoped>
-.df-radio-group :deep(.dx-radiogroup) {
-  font-size: var(--df-font-size, 14px);
-}
-.df-radio-group--small :deep(.dx-radiogroup) {
-  font-size: 12px;
-}
-.df-radio-group--large :deep(.dx-radiogroup) {
-  font-size: 16px;
-}
 </style>

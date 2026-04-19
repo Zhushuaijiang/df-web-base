@@ -113,24 +113,8 @@ function onValueChanged(_e: any) {
 .df-checkbox--mini {
   font-size: var(--df-font-size-xs, 12px);
 }
-.df-checkbox--mini :deep(.dx-checkbox) {
-  font-size: 12px;
-}
-.df-checkbox--mini :deep(.dx-checkbox-icon) {
-  width: 14px;
-  height: 14px;
-  font-size: 10px;
-}
 
 .df-checkbox--small {
   font-size: var(--df-font-size-sm, 13px);
-}
-.df-checkbox--small :deep(.dx-checkbox) {
-  font-size: 13px;
-}
-.df-checkbox--small :deep(.dx-checkbox-icon) {
-  width: 16px;
-  height: 16px;
-  font-size: 11px;
 }
 </style>

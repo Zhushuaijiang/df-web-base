@@ -70,8 +70,4 @@ defineExpose({ getInstance })
   display: block;
 }
 
-.df-accordion :deep(.dx-accordion) {
-  border: 1px solid var(--df-color-border-light, #e4e7ed);
-  border-radius: 4px;
-}
 </style>

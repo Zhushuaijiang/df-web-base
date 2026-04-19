@@ -136,24 +136,6 @@ function onEndChanged(e: any) {
   flex-shrink: 0;
 }
 
-.df-time-picker--small :deep(.dx-texteditor-input) {
-  font-size: 12px;
-  height: 28px;
-}
-
-.df-time-picker--small :deep(.dx-texteditor-container) {
-  height: 28px;
-}
-
-.df-time-picker--large :deep(.dx-texteditor-input) {
-  font-size: 16px;
-  height: 40px;
-}
-
-.df-time-picker--large :deep(.dx-texteditor-container) {
-  height: 40px;
-}
-
 .df-time-picker--disabled {
   opacity: 0.6;
   cursor: not-allowed;

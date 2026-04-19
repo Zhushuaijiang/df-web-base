@@ -81,8 +81,4 @@ function onValueChanged(e: any) {
 <style scoped>
 .df-input-number { display: inline-flex; }
 .df-input-number--disabled { opacity: 0.6; }
-.df-input-number--small :deep(.dx-texteditor-input) { height: 28px; font-size: 12px; }
-.df-input-number--small :deep(.dx-texteditor-container) { height: 28px; }
-.df-input-number--large :deep(.dx-texteditor-input) { height: 40px; font-size: 16px; }
-.df-input-number--large :deep(.dx-texteditor-container) { height: 40px; }
 </style>

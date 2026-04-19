@@ -81,8 +81,4 @@ defineExpose({ getInstance, getDataSource, bindChart, updateDimensions })
   width: 100%;
 }
 
-.df-pivot-grid :deep(.dx-pivotgrid) {
-  border: 1px solid var(--df-color-border-light, #e4e7ed);
-  border-radius: 4px;
-}
 </style>

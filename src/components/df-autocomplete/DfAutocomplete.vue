@@ -126,8 +126,4 @@ defineExpose({ focus, dxRef })
 <style scoped>
 .df-autocomplete { display: inline-flex; width: 100%; }
 .df-autocomplete--disabled { opacity: .6; pointer-events: none; }
-.df-autocomplete--small :deep(.dx-texteditor-input) { height: 28px; font-size: 12px; }
-.df-autocomplete--small :deep(.dx-texteditor-container) { height: 28px; }
-.df-autocomplete--large :deep(.dx-texteditor-input) { height: 40px; font-size: 16px; }
-.df-autocomplete--large :deep(.dx-texteditor-container) { height: 40px; }
 </style>

@@ -121,23 +121,4 @@ defineExpose({ focus, blur, dxRef })
 <style scoped>
 .df-tag-select { display: inline-flex; width: 100%; }
 .df-tag-select--disabled { opacity: .6; pointer-events: none; }
-.df-tag-select--small :deep(.dx-texteditor) { font-size: 12px; }
-.df-tag-select--small :deep(.dx-texteditor-input) { height: 28px; }
-.df-tag-select--small :deep(.dx-texteditor-container) { min-height: 28px; }
-.df-tag-select--small :deep(.dx-tag) { font-size: 12px; padding: 0 6px; height: 20px; }
-.df-tag-select--large :deep(.dx-texteditor) { font-size: 16px; }
-.df-tag-select--large :deep(.dx-texteditor-input) { height: 40px; }
-.df-tag-select--large :deep(.dx-texteditor-container) { min-height: 40px; }
-.df-tag-select--large :deep(.dx-tag) { font-size: 14px; padding: 2px 10px; }
-
-:deep(.dx-tag) {
-  background: var(--df-color-primary-light, #ecf5ff);
-  color: var(--df-color-primary, #409eff);
-  border: 1px solid var(--df-color-primary-light, #d9ecff);
-  border-radius: 4px;
-}
-
-:deep(.dx-tag-remove-button::before) {
-  color: var(--df-color-primary, #409eff);
-}
 </style>

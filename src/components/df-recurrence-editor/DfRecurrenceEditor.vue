@@ -51,9 +51,6 @@ defineExpose({ getInstance })
 </script>
 
 <style scoped>
-.df-recurrence-editor :deep(.dx-recurrenceeditor) {
-  font-size: var(--df-font-size, 14px);
-}
 .df-recurrence-editor--disabled {
   opacity: 0.6;
   pointer-events: none;

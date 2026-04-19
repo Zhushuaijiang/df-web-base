@@ -116,8 +116,4 @@ defineExpose({ treeRef, dropDownRef })
 <style scoped>
 .df-tree-select { display: inline-flex; }
 .df-tree-select--disabled { opacity: 0.6; pointer-events: none; }
-.df-tree-select--small :deep(.dx-texteditor-input) { height: 28px; font-size: 12px; }
-.df-tree-select--small :deep(.dx-texteditor-container) { height: 28px; }
-.df-tree-select--large :deep(.dx-texteditor-input) { height: 40px; font-size: 16px; }
-.df-tree-select--large :deep(.dx-texteditor-container) { height: 40px; }
 </style>

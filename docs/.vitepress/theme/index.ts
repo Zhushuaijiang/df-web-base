@@ -1,10 +1,12 @@
 import { type Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import DemoBlock from './DemoBlock.vue'
+import MyLayout from './MyLayout.vue'
 import './demo-utilities.css'
 
 export default {
   extends: DefaultTheme,
+  Layout: MyLayout,
   enhanceApp({ app }) {
     // DevExtreme CSS + 组件注册仅在客户端执行
     if (!import.meta.env.SSR) {

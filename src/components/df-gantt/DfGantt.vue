@@ -118,8 +118,4 @@ defineExpose({ getInstance, getSelectedRowKeys, expandAll, collapseAll, showTask
   min-height: 400px;
 }
 
-.df-gantt :deep(.dx-gantt) {
-  border: 1px solid var(--df-color-border-light, #e4e7ed);
-  border-radius: 4px;
-}
 </style>
