@@ -23,7 +23,7 @@ function showLoading() {
 
 <div style="position: relative; height: 200px; border: 1px solid #e0e0e0; border-radius: 4px;">
   <df-button type="primary" @click="showLoading" style="margin: 16px;">显示加载面板</df-button>
-  <df-load-panel v-model:visible="loading" message="加载中，请稍候..." container="parent" :shading="true"></df-load-panel>
+  <df-load-panel v-model="loading" message="加载中，请稍候..." container="parent" :shading="true"></df-load-panel>
 </div>
 
 <template #code>
@@ -33,7 +33,7 @@ function showLoading() {
   <div style="position: relative; height: 200px;">
     <df-button type="primary" @click="showLoading">显示加载面板</df-button>
     <df-load-panel
-      v-model:visible="loading"
+      v-model="loading"
       message="加载中，请稍候..."
       container="parent"
       :shading="true"
