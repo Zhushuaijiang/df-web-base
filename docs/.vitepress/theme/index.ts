@@ -1,11 +1,7 @@
 import { type Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import DemoBlock from './DemoBlock.vue'
-import './style.css'
 import './demo-utilities.css'
-
-// df-web-base 设计令牌 (pure CSS, SSR safe)
-import '../../../src/styles/index.css'
 
 export default {
   extends: DefaultTheme,
