@@ -4,7 +4,7 @@ export default defineConfig({
   title: 'df-web-base',
   description: '基于 Vue 3 + DevExtreme 25.2 的 HIS 组件库',
   lang: 'zh-CN',
-  base: '/',
+  base: '/df-web-base/',
 
   themeConfig: {
     logo: false,
